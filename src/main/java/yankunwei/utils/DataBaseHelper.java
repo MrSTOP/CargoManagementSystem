@@ -16,10 +16,7 @@ public class DataBaseHelper {
     static  {
         Properties properties = new Properties();
         try {
-            if (DataBaseHelper.class.getResourceAsStream("/main/java/yankunwei/Config.properties") == null) {
-                System.out.println("DDDD");
-            }
-            properties.load(DataBaseHelper.class.getResourceAsStream("/yankunwei/Config.properties"));
+            properties.load(DataBaseHelper.class.getResourceAsStream("/Config.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
