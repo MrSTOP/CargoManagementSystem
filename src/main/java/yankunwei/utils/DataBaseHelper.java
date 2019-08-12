@@ -35,7 +35,7 @@ public class DataBaseHelper {
         UserName = properties.getProperty("UserName");
         Password = properties.getProperty("Password");
         DBURL = String.format(properties.getProperty("DBURLFormat"),
-                              DBName, UserName, Password);
+                              DBName, DBPort);
         logger.info("Load Database Config success");
     }
 
