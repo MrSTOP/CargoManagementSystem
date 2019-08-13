@@ -1,0 +1,23 @@
+table {
+    border-collapse: collapse;
+    font-family: Futura, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+caption {
+    font-size: larger;
+    margin: 1em auto;
+}
+th,td {
+    width: 300px;
+    padding: .65em;
+}
+th {
+    background: #555;
+    border: 1px solid #777;
+    color: #fff;
+}
+td {
+    width: 300px;
+    border: 1px solid#777;
+}
