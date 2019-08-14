@@ -43,6 +43,7 @@ public class ProductInfoDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         BigDecimal price = null;
+        logger.info("Query product price. productID:{}", productID);
         try {
             connection = DataBaseHelper.getConnection();
             String SQL = "SELECT \"ProductSalePrice\" FROM \"Product\" WHERE \"ProductID\"=?";
@@ -53,11 +54,12 @@ public class ProductInfoDAO {
                 price = resultSet.getBigDecimal("ProductSalePrice");
             }
         } catch (SQLException e) {
+            logger.error("Query product price failed.");
             e.printStackTrace();
         } finally {
             DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
         }
-        logger.info("Query productID:{}'s price is {}", productID, price);
+        logger.info("Query product price success. productID:{} price:{}", productID, price);
         return price;
     }
 }
