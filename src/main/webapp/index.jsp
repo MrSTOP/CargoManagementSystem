@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
-<%@ page import="yankunwei.utils.DataBaseHelper" %>
+<%@ page import="org.apache.logging.log4j.Logger" %>
+<%@ page import="org.apache.logging.log4j.LogManager" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -29,5 +30,9 @@
     </head>
     <body>
     <h2>Hello World!</h2>
+    <%
+        Logger logger = LogManager.getLogger();
+        logger.info("Hello World!");
+    %>
     </body>
 </html>
