@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import yankunwei.jsonObj.JSONOrderInfo;
+import yankunwei.jsonObj.OrderInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +22,8 @@ public class ProcessOrderInput extends HttpServlet {
         String JSONData = request.getParameter("JSONOrderInfoStr");
         logger.debug(JSONData);
         Gson gson = new Gson();
-        List<JSONOrderInfo> orderInfos = gson.fromJson(JSONData, new TypeToken<ArrayList<JSONOrderInfo>>(){}.getType());
-        for (JSONOrderInfo i: orderInfos) {
+        List<OrderInfo> orderInfos = gson.fromJson(JSONData, new TypeToken<ArrayList<OrderInfo>>(){}.getType());
+        for (OrderInfo i: orderInfos) {
             System.out.println(i);
         }
     }

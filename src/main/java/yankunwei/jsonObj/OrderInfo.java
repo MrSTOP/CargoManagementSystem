@@ -1,14 +1,14 @@
 package yankunwei.jsonObj;
 
-public class JSONOrderInfo {
+public class OrderInfo {
     private int userID = 0;
     private int productID = 0;
     private int productCount = 0;
     
-    public JSONOrderInfo() {
+    public OrderInfo() {
     }
     
-    public JSONOrderInfo(int userID, int productID, int productCount) {
+    public OrderInfo(int userID, int productID, int productCount) {
         this.userID = userID;
         this.productID = productID;
         this.productCount = productCount;
