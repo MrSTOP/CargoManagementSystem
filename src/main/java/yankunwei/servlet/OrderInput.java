@@ -1,7 +1,7 @@
 package yankunwei.servlet;
 
-import yankunwei.dao.IProductInfoDAO;
-import yankunwei.dao.IUserInfoDAO;
+import common.dao.IProductInfoDAO;
+import common.dao.IUserInfoDAO;
 import yankunwei.dao.ProductInfoDAO;
 import yankunwei.dao.UserInfoDAO;
 

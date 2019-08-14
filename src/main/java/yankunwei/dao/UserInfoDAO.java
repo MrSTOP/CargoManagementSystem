@@ -1,5 +1,6 @@
 package yankunwei.dao;
 
+import common.dao.IUserInfoDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import yankunwei.utils.DataBaseHelper;

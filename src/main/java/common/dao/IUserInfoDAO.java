@@ -1,4 +1,4 @@
-package yankunwei.dao;
+package common.dao;
 
 import java.util.List;
 

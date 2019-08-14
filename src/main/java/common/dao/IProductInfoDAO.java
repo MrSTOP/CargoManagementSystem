@@ -1,4 +1,4 @@
-package yankunwei.dao;
+package common.dao;
 
 import java.math.BigDecimal;
 import java.util.List;
