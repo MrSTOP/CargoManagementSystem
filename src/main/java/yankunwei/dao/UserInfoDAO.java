@@ -28,10 +28,12 @@ public class UserInfoDAO {
                 userIDs.add(resultSet.getInt("UserID"));
             }
         } catch (SQLException e) {
+            logger.error("Query All UserID failed");
             e.printStackTrace();
         } finally {
             DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
         }
+        logger.info("Query All UserID success");
         return userIDs;
     }
 }
