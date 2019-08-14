@@ -12,12 +12,12 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class SaleOrderInfoDAO {
-    public static final int RECEIVE_STATE_NOT_RECEIVE = 0;
-    public static final int RECEIVE_STATE_RECEIVED = 1;
+public class SaleOrderInfoDAO implements ISaleOrderInfoDAO {
     private Logger logger = LogManager.getLogger(SaleOrderInfoDAO.class);
+    
+    @Override
     public void insertSaleOrder(List<OrderInfo> orderInfos) {
-        ProductInfoDAO productInfoDAO = new ProductInfoDAO();
+        IProductInfoDAO productInfoDAO = new ProductInfoDAO();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         logger.info("Insert new saleOrder");
@@ -32,7 +32,7 @@ public class SaleOrderInfoDAO {
                 preparedStatement.setInt(3, orderInfo.getProductCount());
                 preparedStatement.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
                 preparedStatement.setBigDecimal(5, price.multiply(new BigDecimal(orderInfo.getProductCount())));
-                preparedStatement.setInt(6, RECEIVE_STATE_NOT_RECEIVE);
+                preparedStatement.setInt(6, ISaleOrderInfoDAO.RECEIVE_STATE_NOT_RECEIVE);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {

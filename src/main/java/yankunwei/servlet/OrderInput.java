@@ -1,5 +1,7 @@
 package yankunwei.servlet;
 
+import yankunwei.dao.IProductInfoDAO;
+import yankunwei.dao.IUserInfoDAO;
 import yankunwei.dao.ProductInfoDAO;
 import yankunwei.dao.UserInfoDAO;
 
@@ -14,8 +16,8 @@ import java.util.List;
 @WebServlet(name = "OrderInput", urlPatterns = "/OrderInput")
 public class OrderInput extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserInfoDAO userInfoDAO = new UserInfoDAO();
-        ProductInfoDAO productInfoDAO = new ProductInfoDAO();
+        IUserInfoDAO userInfoDAO = new UserInfoDAO();
+        IProductInfoDAO productInfoDAO = new ProductInfoDAO();
         List<Integer> userIDs = userInfoDAO.getAllUserID();
         List<Integer> productIDs = productInfoDAO.getAllProductID();
         request.setAttribute("AllUserID", userIDs);

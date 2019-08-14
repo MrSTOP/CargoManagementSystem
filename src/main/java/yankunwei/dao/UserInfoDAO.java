@@ -11,8 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserInfoDAO {
+public class UserInfoDAO implements IUserInfoDAO {
     private Logger logger = LogManager.getLogger(UserInfoDAO.class);
+    
+    @Override
     public List<Integer> getAllUserID() {
         List<Integer> userIDs = new ArrayList<>();
         Connection connection = null;

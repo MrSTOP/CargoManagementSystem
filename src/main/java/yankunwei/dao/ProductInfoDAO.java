@@ -12,8 +12,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductInfoDAO {
+public class ProductInfoDAO implements IProductInfoDAO {
     private Logger logger = LogManager.getLogger(ProductInfoDAO.class);
+    
+    @Override
     public List<Integer> getAllProductID() {
         List<Integer> productIDs = new ArrayList<>();
         Connection connection = null;
@@ -38,6 +40,7 @@ public class ProductInfoDAO {
         return productIDs;
     }
     
+    @Override
     public BigDecimal getProductSalePriceByID(int productID) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
