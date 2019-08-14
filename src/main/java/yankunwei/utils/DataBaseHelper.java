@@ -46,14 +46,6 @@ public class DataBaseHelper {
     }
 
     public static Connection getConnection() throws SQLException {
-        logger.info("Start Loading Driver ...");
-        try {
-            Class.forName(DriverName);
-        } catch (ClassNotFoundException e) {
-            logger.fatal("Loading Driver failed");
-            e.printStackTrace();
-        }
-        logger.info("Loading Driver success");
         logger.info("Getting Database Connection ...");
         Connection connection = null;
         try {
