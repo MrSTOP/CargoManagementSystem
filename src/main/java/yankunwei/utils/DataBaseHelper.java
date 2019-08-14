@@ -55,7 +55,13 @@ public class DataBaseHelper {
         }
         logger.info("Loading Driver success");
         logger.info("Getting Database Connection ...");
-        Connection connection = DriverManager.getConnection(DBURL, UserName, Password);
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(DBURL, UserName, Password);
+        } catch (Exception e) {
+            logger.error("Get Database Connecton failed");
+            e.printStackTrace();
+        }
         logger.info("Get Database Connection success");
         return connection;
     }
