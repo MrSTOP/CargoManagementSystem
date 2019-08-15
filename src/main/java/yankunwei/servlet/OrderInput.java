@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "OrderInput", urlPatterns = "/OrderInput")
@@ -18,10 +19,10 @@ public class OrderInput extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IUserInfoDAO userInfoDAO = new UserInfoDAO();
         IProductInfoDAO productInfoDAO = new ProductInfoDAO();
-        List<Integer> userIDs = userInfoDAO.getAllUserID();
-        List<Integer> productIDs = productInfoDAO.getAllProductID();
+        List<Long> userIDs = userInfoDAO.getAllUserID();
+        List<Long> productIDs = productInfoDAO.getAllProductID();
         request.setAttribute("AllUserID", userIDs);
-        request.setAttribute("AllProductID", productIDs);
+        request.setAttribute("AllProductID", new ArrayList<>());
         request.getRequestDispatcher("OrderInput.jsp").forward(request, response);
     }
 

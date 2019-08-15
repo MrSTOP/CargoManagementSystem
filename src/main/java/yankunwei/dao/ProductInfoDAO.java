@@ -17,8 +17,8 @@ public class ProductInfoDAO implements IProductInfoDAO {
     private Logger logger = LogManager.getLogger(ProductInfoDAO.class);
     
     @Override
-    public List<Integer> getAllProductID() {
-        List<Integer> productIDs = new ArrayList<>();
+    public List<Long> getAllProductID() {
+        List<Long> productIDs = new ArrayList<>();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -29,7 +29,7 @@ public class ProductInfoDAO implements IProductInfoDAO {
             preparedStatement = connection.prepareStatement(SQL);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                productIDs.add(resultSet.getInt("ProductID"));
+                productIDs.add(resultSet.getLong("ProductID"));
             }
         } catch (SQLException e) {
             logger.error("Query All ProductID failed");
@@ -42,7 +42,7 @@ public class ProductInfoDAO implements IProductInfoDAO {
     }
     
     @Override
-    public BigDecimal getProductSalePriceByID(int productID) {
+    public BigDecimal getProductSalePriceByID(long productID) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -52,7 +52,7 @@ public class ProductInfoDAO implements IProductInfoDAO {
             connection = DataBaseHelper.getConnection();
             String SQL = "SELECT \"ProductSalePrice\" FROM \"Product\" WHERE \"ProductID\"=?";
             preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setInt(1, productID);
+            preparedStatement.setLong(1, productID);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 price = resultSet.getBigDecimal("ProductSalePrice");
