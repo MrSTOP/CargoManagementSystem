@@ -124,8 +124,8 @@
                     <td style="width: 250px;">
                         <div style="position: relative;">
                             <select name="ProductID">
-                                <c:forEach items="${requestScope.AllUserID}" var="userID">
-                                    <option>${userID}</option>
+                                <c:forEach items="${requestScope.AllProductID}" var="productID">
+                                    <option>${productID}</option>
                                 </c:forEach>
                             </select>
                         </div>
