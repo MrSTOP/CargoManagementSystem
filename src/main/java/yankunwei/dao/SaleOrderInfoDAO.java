@@ -25,7 +25,7 @@ public class SaleOrderInfoDAO implements ISaleOrderInfoDAO {
         logger.info("Insert new saleOrder");
         try {
             connection = DataBaseHelper.getConnection();
-            String SQL = "INSERT INTO \"SaleOrder\"(\"SaleOrderID\", \"UserID\", \"ProductID\", \"SaleOrderCount\", \"SaleDate\", \"SaleProductPrice\", \"ReceiveStatus\") VALUES (SALEORDERID_SEQ.nextval, ?, ?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO \"SaleOrder\"(\"SaleOrderID\", \"UserID\", \"ProductID\", \"SaleOrderCount\", \"SaleDate\", \"SaleProductPrice\", \"ReceiveStatus\") VALUES (SALE_ORDER_ID_SEQ.nextval, ?, ?, ?, ?, ?, ?)";
             preparedStatement = connection.prepareStatement(SQL);
             for (OrderInfo orderInfo: orderInfos) {
                 BigDecimal price = productInfoDAO.getProductSalePriceByID(orderInfo.getProductID());
