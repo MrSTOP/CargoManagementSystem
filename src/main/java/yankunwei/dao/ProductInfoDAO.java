@@ -3,6 +3,7 @@ package yankunwei.dao;
 import common.dao.IProductInfoDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import yankunwei.javabean.ProductInfo;
 import yankunwei.utils.DataBaseHelper;
 
 import java.math.BigDecimal;
@@ -15,6 +16,8 @@ import java.util.List;
 
 public class ProductInfoDAO implements IProductInfoDAO {
     private Logger logger = LogManager.getLogger(ProductInfoDAO.class);
+    
+    
     
     @Override
     public List<Long> getAllProductID() {
@@ -65,5 +68,61 @@ public class ProductInfoDAO implements IProductInfoDAO {
         }
         logger.info("Query product price success. productID:{} price:{}", productID, price);
         return price;
+    }
+    
+    @Override
+    public boolean insertProduct(ProductInfo productInfo) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = DataBaseHelper.getConnection();
+            String SQL = "INSERT INTO \"Product\"(\"ProductID\", \"SupplierID\", \"SupplierOrderID\", \"ProductName\", \"ProductSalePrice\", \"ProductBuyPrice\", \"ProductDescription\") VALUES (PRODUCT_ID_SEQ.nextval, ?, ?, ?, ?, ?, ?)";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setLong(1, productInfo.getSupplierID());
+            preparedStatement.setLong(2, productInfo.getSupplierOrderID());
+            preparedStatement.setString(3, productInfo.getProductName());
+            preparedStatement.setBigDecimal(4, productInfo.getProductSalePrice());
+            preparedStatement.setBigDecimal(5, productInfo.getProductBuyPrice());
+            preparedStatement.setString(6, productInfo.getProductDescription());
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(null, preparedStatement, connection);
+        }
+        return false;
+    }
+    
+    @Override
+    public List<ProductInfo> getAllProductInfo() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<ProductInfo> productInfos = new ArrayList<>();
+        logger.info("Query all product info");
+        try {
+            connection = DataBaseHelper.getConnection();
+            String SQL = "SELECT * FROM \"Product\"";
+            preparedStatement = connection.prepareStatement(SQL);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                ProductInfo productInfo = new ProductInfo(
+                        resultSet.getLong("ProductID"),
+                        resultSet.getLong("SupplierID"),
+                        resultSet.getLong("SupplierOrderID"),
+                        resultSet.getString("ProductName"),
+                        resultSet.getBigDecimal("ProductSalePrice"),
+                        resultSet.getBigDecimal("ProductBuyPrice"),
+                        resultSet.getString("ProductDescription"));
+                productInfos.add(productInfo);
+            }
+        } catch (SQLException e) {
+            logger.error("Query all product info failed");
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
+        }
+        logger.info("Query all product info success");
+        return productInfos;
     }
 }
