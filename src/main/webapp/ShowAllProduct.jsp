@@ -39,13 +39,22 @@
                                 url: "ExecDeleteProduct",
                                 data: "ProductID=" + line.children("td:nth-of-type(1)").html(),
                                 type: "post",
-                                success: function () {
-                                    line.remove();
+                                success: function (data) {
+                                    if (data === "true") {
+                                        line.remove();
+                                    } else {
+                                        alert("删除失败！");
+                                    }
                                 },
                                 error: function () {
                                     alert("删除失败！");
                                 }
                             });
+                        }
+                    });
+                    $(element).bind({
+                        "click": function () {
+                            window.location.href = "ExecModifyProduct";
                         }
                     })
                 });
