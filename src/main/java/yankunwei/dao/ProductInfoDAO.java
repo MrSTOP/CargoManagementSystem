@@ -74,6 +74,7 @@ public class ProductInfoDAO implements IProductInfoDAO {
     public boolean insertProduct(ProductInfo productInfo) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
+        logger.info("Insert new product Name:{}", productInfo.getProductName());
         try {
             connection = DataBaseHelper.getConnection();
             String SQL = "INSERT INTO \"Product\"(\"ProductID\", \"SupplierID\", \"SupplierOrderID\", \"ProductName\", \"ProductSalePrice\", \"ProductBuyPrice\", \"ProductDescription\") VALUES (PRODUCT_ID_SEQ.nextval, ?, ?, ?, ?, ?, ?)";
@@ -84,8 +85,46 @@ public class ProductInfoDAO implements IProductInfoDAO {
             preparedStatement.setBigDecimal(4, productInfo.getProductSalePrice());
             preparedStatement.setBigDecimal(5, productInfo.getProductBuyPrice());
             preparedStatement.setString(6, productInfo.getProductDescription());
-            return preparedStatement.executeUpdate() == 1;
+            if (preparedStatement.executeUpdate() == 1) {
+                logger.info("Insert new product success");
+                return true;
+            } else {
+                logger.error("Insert new product failed");
+                return false;
+            }
         } catch (SQLException e) {
+            logger.error("Insert new product failed");
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(null, preparedStatement, connection);
+        }
+        return false;
+    }
+    
+    @Override
+    public boolean deleteProduct(ProductInfo productInfo) {
+        return this.deleteProductByID(productInfo.getProductID());
+    }
+    
+    @Override
+    public boolean deleteProductByID(long productID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        logger.info("Delete product ID:{}", productID);
+        try {
+            connection = DataBaseHelper.getConnection();
+            String SQL = "DELETE FROM \"Product\" WHERE \"ProductID\"=?";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setLong(1, productID);
+            if (preparedStatement.executeUpdate() == 1) {
+                logger.info("Delete product success");
+                return true;
+            } else {
+                logger.error("Delete product failed");
+                return false;
+            }
+        } catch (SQLException e) {
+            logger.error("Delete product failed");
             e.printStackTrace();
         } finally {
             DataBaseHelper.closeResource(null, preparedStatement, connection);

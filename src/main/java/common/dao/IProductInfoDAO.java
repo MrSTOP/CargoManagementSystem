@@ -12,5 +12,9 @@ public interface IProductInfoDAO {
     
     boolean insertProduct(ProductInfo productInfo);
     
+    boolean deleteProduct(ProductInfo productInfo);
+    
+    boolean deleteProductByID(long productID);
+    
     List<ProductInfo> getAllProductInfo();
 }
