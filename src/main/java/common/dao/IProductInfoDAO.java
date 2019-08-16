@@ -10,6 +10,8 @@ public interface IProductInfoDAO {
     
     BigDecimal getProductSalePriceByID(long productID);
     
+    ProductInfo getProductInfoByID(long productID);
+    
     boolean insertProduct(ProductInfo productInfo);
     
     boolean deleteProduct(ProductInfo productInfo);

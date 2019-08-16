@@ -71,6 +71,38 @@ public class ProductInfoDAO implements IProductInfoDAO {
     }
     
     @Override
+    public ProductInfo getProductInfoByID(long productID) {
+        ProductInfo productInfo = new ProductInfo();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        logger.info("Query product info ID:{}", productInfo);
+        try {
+            connection = DataBaseHelper.getConnection();
+            String SQL = "SELECT * FROM \"Product\" WHERE \"ProductID\"=?";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setLong(1, productID);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                productInfo.setProductID(resultSet.getLong("ProductID"));
+                productInfo.setSupplierID(resultSet.getLong("SupplierID"));
+                productInfo.setSupplierOrderID(resultSet.getLong("SupplierOrderID"));
+                productInfo.setProductName(resultSet.getString("ProductName"));
+                productInfo.setProductSalePrice(resultSet.getBigDecimal("ProductSalePrice"));
+                productInfo.setProductBuyPrice(resultSet.getBigDecimal("ProductBuyPrice"));
+                productInfo.setProductDescription(resultSet.getString("ProductDescription"));
+            }
+        } catch (SQLException e) {
+            logger.error("Query product info failed");
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
+        }
+        logger.info("Query product info success");
+        return productInfo;
+    }
+    
+    @Override
     public boolean insertProduct(ProductInfo productInfo) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
