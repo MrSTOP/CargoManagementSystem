@@ -14,6 +14,7 @@ public class ProductInfo {
   private String productDescription;
   
   public ProductInfo() {
+    this(-1, -1, -1, null, null, null, null);
   }
   
   public ProductInfo(long productID, long supplierID, long supplierOrderID, String productName, BigDecimal productSalePrice, BigDecimal productBuyPrice, String productDescription) {
