@@ -2,8 +2,10 @@ package yankunwei.servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import common.dao.ISaleOrderInfoDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import yankunwei.dao.SaleOrderInfoDAO;
 import yankunwei.jsonObj.OrderInfo;
 
 import javax.servlet.ServletException;
@@ -20,12 +22,12 @@ public class ProcessOrderInput extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Logger logger = LogManager.getLogger(ProcessOrderInput.class);
         String JSONData = request.getParameter("JSONOrderInfoStr");
+        ISaleOrderInfoDAO saleOrderInfoDAO = new SaleOrderInfoDAO();
         logger.debug(JSONData);
         Gson gson = new Gson();
         List<OrderInfo> orderInfos = gson.fromJson(JSONData, new TypeToken<ArrayList<OrderInfo>>(){}.getType());
-        for (OrderInfo i: orderInfos) {
-            System.out.println(i);
-        }
+//        saleOrderInfoDAO.insertSaleOrder(orderInfos);
+        response.sendRedirect("OrderInput");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
