@@ -54,7 +54,7 @@
                     });
                     $(element).bind({
                         "click": function () {
-                            window.location.href = "ExecModifyProduct";
+                            window.location.href = "ModifyProduct";
                         }
                     })
                 });
