@@ -37,13 +37,21 @@
                 $("[name=ProductID]").editableSelect();
                 $("#AddProduct").bind({
                     "click": function () {
-                        var cell = "<tr sytle='position: relative'>";
-                        cell += "<td>" + $("[name=UserID]").val() + "</td>";
-                        cell += "<td>" + $("[name=ProductID]").val() + "</td>";
-                        cell += "<td>" + $("[name=ProductCount]").val() + "</td>";
-                        cell += "<td><button type='button' onclick='console.log($(this).parent().parent().remove())'>删除</button></td>";
-                        cell += "</tr>";
-                        $("#OrderList>table>tbody").append(cell);
+                        var userID = $("[name=UserID]").val();
+                        var productID = $("[name=ProductID]").val();
+                        var productCount = $("[name=ProductCount]").val();
+                        var regExp = /^[0-9]+$/;
+                        if (!userID.match(regExp) || !productID.match(regExp) || !productCount.match(regExp)) {
+                            alert("有未填写的项或内容有误");
+                        } else {
+                            var cell = "<tr>";
+                            cell += "<td>" + userID + "</td>";
+                            cell += "<td>" + productID + "</td>";
+                            cell += "<td>" + productCount + "</td>";
+                            cell += "<td><button type='button' onclick='console.log($(this).parent().parent().remove())'>删除</button></td>";
+                            cell += "</tr>";
+                            $("#OrderList>table>tbody").append(cell);
+                        }
                     }
                 });
                 $("#SubmitOrder").bind({
