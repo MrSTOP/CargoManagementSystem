@@ -52,9 +52,12 @@
                             });
                         }
                     });
+                });
+                $("[name=ModifyProduct]").each(function (index, element) {
                     $(element).bind({
                         "click": function () {
-                            window.location.href = "ModifyProduct";
+                            var line = $(this).parent().parent();
+                            window.location.href = "ModifyProduct?ProductID=" + line.children("td:nth-of-type(1)").html();
                         }
                     })
                 });
