@@ -1,11 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
   User: MrST
-  Date: 2019/7/25
-  Time: 8:50
+  Date: 2019/8/17
+  Time: 11:22
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" pageEncoding="UTF-8" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -16,7 +16,7 @@
     <head>
         <base href="<%=basePath%>">
 
-        <title>index.jsp</title>
+        <title>Welcome.jsp</title>
         <meta http-equiv="pragma" content="no-cache">
         <meta http-equiv="cache-control" content="no-cache">
         <meta http-equiv="expires" content="0">
@@ -26,11 +26,10 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
         -->
     </head>
-    <frameset rows="6%,94%" name="Page">
-        <frame src="./Title.jsp" scrolling="no">
-        <frameset cols="16%,84%">
-            <frame src="./Menu.jsp">
-            <frame src="./Welcome.jsp" name="MainArea">
-        </frameset>
-    </frameset>
+
+    <body>
+    <div style="width: 30%;text-align: center;margin: 50px auto auto;">
+        <h1>欢迎使用系统！</h1>
+    </div>
+    </body>
 </html>
