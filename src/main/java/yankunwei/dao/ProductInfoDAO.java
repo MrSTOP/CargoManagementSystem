@@ -17,8 +17,6 @@ import java.util.List;
 public class ProductInfoDAO implements IProductInfoDAO {
     private Logger logger = LogManager.getLogger(ProductInfoDAO.class);
     
-    
-    
     @Override
     public List<Long> getAllProductID() {
         List<Long> productIDs = new ArrayList<>();
@@ -130,6 +128,38 @@ public class ProductInfoDAO implements IProductInfoDAO {
         } finally {
             DataBaseHelper.closeResource(null, preparedStatement, connection);
         }
+        return false;
+    }
+    
+    @Override
+    public boolean updateProduct(ProductInfo productInfo) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        logger.info("Update product info ID:{}", productInfo.getProductID());
+        try {
+            connection = DataBaseHelper.getConnection();
+            String SQL = "UPDATE \"Product\" SET \"ProductID\"=?, \"SupplierID\"=?, \"SupplierOrderID\"=?, \"ProductName\"=?, \"ProductSalePrice\"=?, \"ProductBuyPrice\"=?, \"ProductDescription\"=? WHERE \"ProductID\"=?";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setLong(1, productInfo.getProductID());
+            preparedStatement.setLong(2, productInfo.getSupplierID());
+            preparedStatement.setLong(3, productInfo.getSupplierOrderID());
+            preparedStatement.setString(4, productInfo.getProductName());
+            preparedStatement.setBigDecimal(5, productInfo.getProductSalePrice());
+            preparedStatement.setBigDecimal(6, productInfo.getProductBuyPrice());
+            preparedStatement.setString(7, productInfo.getProductDescription());
+            preparedStatement.setLong(8, productInfo.getProductID());
+            if (preparedStatement.executeUpdate() == 1) {
+                logger.info("Update product info success");
+                return true;
+            } else {
+                logger.error("Update product info failed");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(null, preparedStatement, connection);
+        }
+        logger.error("Update product info failed");
         return false;
     }
     
