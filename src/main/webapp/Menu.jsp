@@ -78,8 +78,9 @@
             <div class="div_margin" id="ProductManage">
                 <button class="buttonDefault">产品管理</button>
                 <div class="sub_menu" style="display: none;">
-                    <button onclick="window.open('ShowAllProduct', 'MainArea');" class="buttonDefault sub_menu_button">所有产品</button>
-                    <button onclick="window.open('NewProductInput.jsp', 'MainArea');" class="buttonDefault sub_menu_button">添加产品</button>
+                    <button onclick="window.open('./ShowAllProduct', 'MainArea');" class="buttonDefault sub_menu_button">所有产品</button>
+                    <button onclick="window.open('./NewProductInput', 'MainArea');" class="buttonDefault sub_menu_button">添加产品</button>
+                    <button onclick="window.open('./BuyOrderInput', 'MainArea');" class="buttonDefault sub_menu_button">添加进货单</button>
                 </div>
             </div>
             <div class="div_margin"><button onclick="window.open('./OrderInput', 'MainArea');" class="buttonDefault">添加订单</button></div>
