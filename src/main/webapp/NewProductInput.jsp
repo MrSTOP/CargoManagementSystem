@@ -36,7 +36,7 @@
                     $("#SupplierID").editableSelect();
                     $("#AddProduct").click(function () {
                         var numRegExp = /^[0-9]+$/;
-                        var bigDecimalRegExp = /^(([0-9]+)|([0-9]+\.[0-9]))$/;
+                        var bigDecimalRegExp = /^(([0-9]+)|([0-9]+\.[0-9]{1,2}))$/;
                         var supplierID = $("#SupplierID").val();
                         var productName = $("#ProductName").val();
                         var productSalePrice = $("#ProductSalePrice").val();
