@@ -1,7 +1,7 @@
 package yankunwei.servlet;
 
-import common.dao.ISupplierDAO;
-import yankunwei.dao.SupplierDAO;
+import common.dao.ISupplierInfoDAO;
+import yankunwei.dao.SupplierInfoDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +14,8 @@ import java.util.List;
 @WebServlet(name = "NewProductInput", urlPatterns = "/NewProductInput")
 public class NewProductInput extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ISupplierDAO supplierDAO = new SupplierDAO();
-        List<Long> suppliers = supplierDAO.getAllSupplierID();
+        ISupplierInfoDAO supplierInfoDAO = new SupplierInfoDAO();
+        List<Long> suppliers = supplierInfoDAO.getAllSupplierID();
         request.setAttribute("AllSupplierID", suppliers);
         request.getRequestDispatcher("NewProductInput.jsp").forward(request, response);
     }
