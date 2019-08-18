@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: MrST
@@ -26,29 +27,29 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
         -->
         <link rel="stylesheet" type="text/css" href="./css/table.css">
+        <link rel="stylesheet" type="text/css" href="./css/jquery-editable-select.min.css">
         <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-editable-select.min.js"></script>
         <script type="text/javascript">
             $(function () {
                 $(document).ready(function () {
+                    $("#SupplierID").editableSelect();
                     $("#AddProduct").click(function () {
                         var numRegExp = /^[0-9]+$/;
                         var bigDecimalRegExp = /^(([0-9]+)|([0-9]+\.[0-9]))$/;
                         var supplierID = $("#SupplierID").val();
-                        var supplierOrderID = $("#SupplierOrderID").val();
                         var productName = $("#ProductName").val();
                         var productSalePrice = $("#ProductSalePrice").val();
                         var productBuyPrice = $("#ProductBuyPrice").val();
                         var productDescription = $("#ProductDescription").val();
                         if (!productBuyPrice.match(bigDecimalRegExp) ||
                             !productSalePrice.match(bigDecimalRegExp) ||
-                            !supplierOrderID.match(numRegExp) ||
                             !supplierID.match(numRegExp)) {
                             alert("有未填写的项或内容有误");
                         } else {
                             $.ajax({
                                 url: "ProcessNewProductInput",
                                 data: "SupplierID=" + supplierID +
-                                    "&SupplierOrderID=" + supplierOrderID +
                                     "&ProductName=" + productName +
                                     "&ProductSalePrice=" + productSalePrice +
                                     "&ProductBuyPrice=" + productBuyPrice +
@@ -78,7 +79,6 @@
                 <thead>
                     <tr>
                         <td>供应商ID</td>
-                        <td>订单ID</td>
                         <td>产品名称</td>
                         <td>产品售价</td>
                         <td>产品进价</td>
@@ -87,8 +87,15 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input id="SupplierID" name="SupplierID" type="text"></td>
-                        <td><input id="SupplierOrderID" name="SupplierOrderID" type="text"></td>
+                        <td>
+                            <div style="position: relative;">
+                                <select id="SupplierID" name="SupplierID">
+                                <c:forEach items="${requestScope.AllSupplierID}" var="supplierID">
+                                    <option>${supplierID}</option>
+                                </c:forEach>
+                            </select>
+                            </div>
+                        </td>
                         <td><input id="ProductName" name="ProductName" type="text"></td>
                         <td><input id="ProductSalePrice" name="ProductSalePrice" type="text"></td>
                         <td><input id="ProductBuyPrice" name="ProductBuyPrice" type="text"></td>
