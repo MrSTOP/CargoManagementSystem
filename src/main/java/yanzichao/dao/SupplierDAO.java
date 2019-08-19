@@ -1,5 +1,6 @@
 package yanzichao.dao;
 
+import common.ISupplierDAO;
 import yankunwei.utils.DataBaseHelper;
 import yanzichao.bean.SupplierInfo;
 import org.apache.logging.log4j.LogManager;
@@ -11,8 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SupplierInfoDAO implements ISupplierInfoDAO{
-    private Logger logger = LogManager.getLogger(SupplierInfoDAO.class);
+public class SupplierDAO implements ISupplierDAO {
+    private Logger logger = LogManager.getLogger(SupplierDAO.class);
     @Override
     public List<Long> getAllSupplierID() {
 

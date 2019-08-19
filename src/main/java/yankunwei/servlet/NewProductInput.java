@@ -2,6 +2,7 @@ package yankunwei.servlet;
 
 import common.dao.ISupplierDAO;
 import yankunwei.dao.SupplierDAO;
+import yanzichao.dao.SupplierDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
