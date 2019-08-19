@@ -1,4 +1,4 @@
-package yanzichao.bean;
+﻿package yanzichao.bean;
 
 public class SupplierInfo {
     private long supplierID;
