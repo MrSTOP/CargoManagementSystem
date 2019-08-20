@@ -1,6 +1,6 @@
 package common.dao;
 
-import yankunwei.dao.BuyOrderInfo;
+import yankunwei.javabean.BuyOrderInfo;
 
 import java.util.List;
 
