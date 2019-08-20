@@ -28,7 +28,7 @@ public class SupplierDAO implements ISupplierInfoDAO {
             preparedStatement = connection.prepareStatement(SQL);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                SupplierIDs.add(resultSet.getLong("ProductID"));
+                SupplierIDs.add(resultSet.getLong("SupplierID"));
             }
         } catch (SQLException e) {
             logger.error("Query All SupplierID failed");
@@ -41,7 +41,7 @@ public class SupplierDAO implements ISupplierInfoDAO {
     }
 
     @Override
-    public boolean delterSupplier(long SupplierID) {
+    public boolean deleteSupplier(long SupplierID) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         logger.info("Delete Supplier");
