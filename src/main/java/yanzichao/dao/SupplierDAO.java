@@ -78,7 +78,7 @@ public class SupplierDAO implements ISupplierInfoDAO {
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 SupplierInfo supplierInfo = new SupplierInfo(
-                        resultSet.getLong("SuppllierID"),
+                        resultSet.getLong("SupplierID"),
                         resultSet.getString("SupplierName"),
                         resultSet.getString("SupplierDescription"),
                         resultSet.getString("SupplierAddress"));
@@ -135,7 +135,7 @@ public class SupplierDAO implements ISupplierInfoDAO {
             preparedStatement = connection.prepareStatement(SQL);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                supplierInfos.setSupplierID(resultSet.getLong("SuppllierID"));
+                supplierInfos.setSupplierID(resultSet.getLong("SupplierID"));
                 supplierInfos.setSupplierName(resultSet.getString("SupplierName"));
                 supplierInfos.setSupplierDescription(resultSet.getString("SupplierDescription"));
                 supplierInfos.setSupplierAddress(resultSet.getString("SupplierAddress"));
