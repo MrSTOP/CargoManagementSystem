@@ -12,7 +12,7 @@ public class UserInfo {
         this(-1, null, null, null, null);
     }
 
-    public UserInfo(long userID, String userName, String email, String address, String phone) {
+    public UserInfo(long userID, String userName, String phone, String email, String address) {
         this.userID = userID;
         this.userName = userName;
         this.email = email;
