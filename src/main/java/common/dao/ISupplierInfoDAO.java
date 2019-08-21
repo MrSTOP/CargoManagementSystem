@@ -7,7 +7,7 @@ import java.util.List;
 public interface ISupplierInfoDAO {
     List<Long> getAllSupplierID();
     
-    boolean delterSupplier(long SupplierID);
+    boolean deleteSupplier(long SupplierID);
     
     List<SupplierInfo> getAllSupplierInfo();
     

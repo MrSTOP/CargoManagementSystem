@@ -1,10 +1,10 @@
-package com.sample;
+package yankunwei.javabean;
 
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class BuyOrder {
+public class BuyOrderInfo {
 
   private long supplierOrderId;
   private long productId;
@@ -14,11 +14,11 @@ public class BuyOrder {
   private int supplierCount;
   private BigDecimal supplierPrice;
   
-  public BuyOrder() {
+  public BuyOrderInfo() {
     this(-1, -1, -1, null, -1, -1, null);
   }
   
-  public BuyOrder(long supplierOrderId, long productId, long supplierId, Timestamp supplierDate, int supplierStatus, int supplierCount, BigDecimal supplierPrice) {
+  public BuyOrderInfo(long supplierOrderId, long productId, long supplierId, Timestamp supplierDate, int supplierStatus, int supplierCount, BigDecimal supplierPrice) {
     this.supplierOrderId = supplierOrderId;
     this.productId = productId;
     this.supplierId = supplierId;
