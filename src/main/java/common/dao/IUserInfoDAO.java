@@ -11,7 +11,7 @@ public interface IUserInfoDAO {
 
     boolean updateUser(UserInfo userInfo);
 
-    boolean deleteUser(UserInfo userInfo);
+    boolean deleteUser(long userID);
 
-
+    List<UserInfo> getAllUserInfo();
 }
