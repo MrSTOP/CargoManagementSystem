@@ -1,4 +1,4 @@
-﻿package yankunwei.servlet;
+package yankunwei.servlet;
 
 import common.dao.IProductInfoDAO;
 import common.dao.IUserInfoDAO;
