@@ -1,9 +1,10 @@
-package yankunwei.servlet;
+﻿package yankunwei.servlet;
 
 import common.dao.IProductInfoDAO;
 import common.dao.IUserInfoDAO;
 import pengchao.dao.UserInfoDAO;
 import yankunwei.dao.ProductInfoDAO;
+import pengchao.dao.UserInfoDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
