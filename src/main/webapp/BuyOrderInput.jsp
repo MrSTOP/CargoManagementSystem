@@ -59,12 +59,13 @@
                         }
                     });
                     $("#SubmitBuyOrder").click(function () {
-                        var JSONData = new Array($("#BuyOrderList>tr").length);
-                        $("#BuyOrderList>tr").each(function (index, element) {
+                        var JSONData = new Array($("#SupplierOrderList>tr").length);
+                        $("#SupplierOrderList>tr").each(function (index, element) {
                             var productID;
                             var supplierID;
                             var supplierCount;
                             var supplierPrice;
+                            console.log($(element).children("td").html());
                             $(element).children("td").each(function (index, element) {
                                 switch (index) {
                                     case 0:
