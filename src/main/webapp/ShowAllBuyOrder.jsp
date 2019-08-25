@@ -36,6 +36,7 @@
                 <tr>
                     <td>进货单编号</td>
                     <td>进货日期</td>
+                    <td>进货总价格</td>
                     <td>是否全部到货</td>
                 </tr>
             </thead>
@@ -44,6 +45,7 @@
                 <tr>
                     <td><a href="ShowBuyOrderListDetail?BuyOrderListID=${buyOrderList.buyOrderID}">${buyOrderList.buyOrderID}</a></td>
                     <td>${buyOrderList.getTimeStr()}</td>
+                    <td>${buyOrderList.totalPrice}</td>
                     <td>${buyOrderList.isAllReceived()}</td>
                 </tr>
             </c:forEach>

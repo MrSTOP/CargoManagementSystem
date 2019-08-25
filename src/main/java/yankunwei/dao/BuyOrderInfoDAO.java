@@ -185,13 +185,15 @@ public class BuyOrderInfoDAO implements IBuyOrderInfoDAO {
             for (long buyOrderID: buyOrderIDs) {
                 boolean received = true;
                 Timestamp date = null;
+                BigDecimal totalPrice = null;
                 preparedStatement.setLong(1, buyOrderID);
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next() && received) {
                     received = resultSet.getInt("SupplierStatus") == SUPPLIER_STATE_RECEIVED;
                     date = resultSet.getTimestamp("SupplierDate");
+                    totalPrice = resultSet.getBigDecimal("SupplierPrice");
                 }
-                BuyOrderListInfo buyOrderListInfo = new BuyOrderListInfo(buyOrderID, date, received);
+                BuyOrderListInfo buyOrderListInfo = new BuyOrderListInfo(buyOrderID, date, received, totalPrice);
                 buyOrderListInfos.add(buyOrderListInfo);
             }
             logger.info("Query all buy order list success");
