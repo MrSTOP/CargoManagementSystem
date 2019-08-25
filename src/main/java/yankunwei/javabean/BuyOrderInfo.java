@@ -3,6 +3,8 @@ package yankunwei.javabean;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class BuyOrderInfo {
 
@@ -58,6 +60,11 @@ public class BuyOrderInfo {
 
   public java.sql.Timestamp getSupplierDate() {
     return supplierDate;
+  }
+  
+  public String getSupplierDateStr() {
+    DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    return format.format(supplierDate);
   }
 
   public void setSupplierDate(java.sql.Timestamp supplierDate) {
