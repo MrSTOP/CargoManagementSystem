@@ -36,6 +36,7 @@ public class BuyOrderInfoDAO implements IBuyOrderInfoDAO {
                 preparedStatement.executeUpdate();
             }
             logger.info("Insert new buy order success");
+            return true;
         } catch (SQLException e) {
             logger.error("Insert new buy order failed");
             e.printStackTrace();
