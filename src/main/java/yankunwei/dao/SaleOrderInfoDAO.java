@@ -26,7 +26,9 @@ public class SaleOrderInfoDAO implements ISaleOrderInfoDAO {
             preparedStatement = connection.prepareStatement(SQL);
             resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            return resultSet.getLong("SALE_ORDER_ID");
+            long saleOrderID = resultSet.getLong("SALE_ORDER_ID");
+            logger.info("Query new sale order id success");
+            return saleOrderID;
         } catch (SQLException e) {
             logger.error("Query new sale order id failed");
             e.printStackTrace();
