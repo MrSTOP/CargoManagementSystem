@@ -12,6 +12,7 @@ public class BuyOrderInfo {
   private java.sql.Timestamp supplierDate;
   private int supplierStatus;
   private int supplierCount;
+  private BigDecimal currentProductPrice;
   private BigDecimal supplierPrice;
   
   public BuyOrderInfo() {
@@ -80,8 +81,16 @@ public class BuyOrderInfo {
   public void setSupplierCount(int supplierCount) {
     this.supplierCount = supplierCount;
   }
-
-
+  
+  
+  public BigDecimal getCurrentProductPrice() {
+    return currentProductPrice;
+  }
+  
+  public void setCurrentProductPrice(BigDecimal currentProductPrice) {
+    this.currentProductPrice = currentProductPrice;
+  }
+  
   public BigDecimal getSupplierPrice() {
     return supplierPrice;
   }

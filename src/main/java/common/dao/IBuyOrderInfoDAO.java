@@ -15,5 +15,7 @@ public interface IBuyOrderInfoDAO {
     
     List<BuyOrderInfo> getAllBuyOrderInfo();
     
+    List<BuyOrderInfo> getAllBuyOrderInfoByID(long supplierOrderID);
+    
     List<BuyOrderListInfo> getAllBuyListInfo();
 }

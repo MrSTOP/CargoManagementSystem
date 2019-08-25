@@ -144,6 +144,46 @@ public class BuyOrderInfoDAO implements IBuyOrderInfoDAO {
         return buyOrderInfos;
     }
     
+    @Override
+    public List<BuyOrderInfo> getAllBuyOrderInfoByID(long supplierOrderID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<BuyOrderInfo> buyOrderInfos = new ArrayList<>();
+        logger.info("Query all buy order id:{}", supplierOrderID);
+        IProductInfoDAO productInfoDAO = new ProductInfoDAO();
+        try {
+            connection = DataBaseHelper.getConnection();
+            //language=SQL
+            String SQL = "SELECT * FROM \"BuyOrder\" WHERE \"SupplierOrderID\"=?";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setLong(1, supplierOrderID);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                BuyOrderInfo buyOrderInfo = new BuyOrderInfo(
+                        resultSet.getLong("SupplierOrderID"),
+                        resultSet.getLong("ProductID"),
+                        resultSet.getLong("SupplierID"),
+                        resultSet.getTimestamp("SupplierDate"),
+                        resultSet.getInt("SupplierStatus"),
+                        resultSet.getInt("SupplierCount"),
+                        resultSet.getBigDecimal("SupplierPrice")
+                );
+                buyOrderInfo.setCurrentProductPrice(
+                        productInfoDAO.getProductBuyPriceByID(
+                                buyOrderInfo.getProductID()));
+                buyOrderInfos.add(buyOrderInfo);
+            }
+            logger.info("Query all buy order by id success");
+        } catch (SQLException e) {
+            logger.error("Query all buy order by id failed");
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(null, preparedStatement, connection);
+        }
+        return buyOrderInfos;
+    }
+    
     private List<Long> getAllBuyOrderID() {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
