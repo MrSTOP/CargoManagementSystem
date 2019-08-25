@@ -5,7 +5,7 @@ import yankunwei.javabean.BuyOrderInfo;
 import java.util.List;
 
 public interface IBuyOrderInfoDAO {
-    boolean insertBuyOrder(BuyOrderInfo buyOrderInfo);
+    boolean insertBuyOrder(List<BuyOrderInfo> buyOrderInfos);
     
     boolean updateBuyOrder(BuyOrderInfo buyOrderInfo);
     
