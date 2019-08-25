@@ -18,10 +18,10 @@ public class BuyOrderInput extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ISupplierInfoDAO supplierDAO = new SupplierDAO();
         IProductInfoDAO productInfoDAO = new ProductInfoDAO();
-        List<Long> products = productInfoDAO.getAllProductID();
+        List<Long> productIDs = productInfoDAO.getAllProductID();
         List<Long> suppliers = supplierDAO.getAllSupplierID();
         request.setAttribute("AllSupplier", suppliers);
-        request.setAttribute("AllProduct", products);
+        request.setAttribute("AllProductID", productIDs);
         request.getRequestDispatcher("BuyOrderInput.jsp").forward(request, response);
     }
     
