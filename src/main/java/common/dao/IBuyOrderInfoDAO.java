@@ -1,6 +1,7 @@
 package common.dao;
 
 import yankunwei.javabean.BuyOrderInfo;
+import yankunwei.javabean.BuyOrderListInfo;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface IBuyOrderInfoDAO {
     boolean updateBuyOrderStatus(long supplierOrderID, long productID, long supplierID, int status);
     
     List<BuyOrderInfo> getAllBuyOrderInfo();
+    
+    List<BuyOrderListInfo> getAllBuyListInfo();
 }

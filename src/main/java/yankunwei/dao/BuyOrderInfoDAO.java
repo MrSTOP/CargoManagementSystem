@@ -4,6 +4,7 @@ import common.dao.IBuyOrderInfoDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import yankunwei.javabean.BuyOrderInfo;
+import yankunwei.javabean.BuyOrderListInfo;
 import yankunwei.utils.DataBaseHelper;
 
 import java.sql.*;
@@ -132,5 +133,65 @@ public class BuyOrderInfoDAO implements IBuyOrderInfoDAO {
             DataBaseHelper.closeResource(null, preparedStatement, connection);
         }
         return buyOrderInfos;
+    }
+    
+    private List<Long> getAllBuyOrderID() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Long> buyOrderIDs = new ArrayList<>();
+        logger.info("Query all buy order id");
+        try {
+            connection = DataBaseHelper.getConnection();
+            //language=SQL
+            String SQL = "SELECT DISTINCT \"SupplierOrderID\" FROM \"BuyOrder\"";
+            preparedStatement = connection.prepareStatement(SQL);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                buyOrderIDs.add(resultSet.getLong("SupplierOrderID"));
+            }
+            logger.info("Query all buy order id success");
+        } catch (SQLException e) {
+            logger.error("Query all buy order id failed");
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
+        }
+        return buyOrderIDs;
+    }
+    
+    @Override
+    public List<BuyOrderListInfo> getAllBuyListInfo() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Long> buyOrderIDs = getAllBuyOrderID();
+        List<BuyOrderListInfo> buyOrderListInfos = new ArrayList<>();
+        logger.info("Query all buy order list");
+        try {
+            connection = DataBaseHelper.getConnection();
+            //language=SQL
+            String SQL = "SELECT * FROM \"BuyOrder\" WHERE \"SupplierOrderID\"=?";
+            preparedStatement = connection.prepareStatement(SQL);
+            for (long buyOrderID: buyOrderIDs) {
+                boolean received = true;
+                Timestamp date = null;
+                preparedStatement.setLong(1, buyOrderID);
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next() && received) {
+                    received = resultSet.getInt("SupplierStatus") == SUPPLIER_STATE_RECEIVED;
+                    date = resultSet.getTimestamp("SupplierDate");
+                }
+                BuyOrderListInfo buyOrderListInfo = new BuyOrderListInfo(buyOrderID, date, received);
+                buyOrderListInfos.add(buyOrderListInfo);
+            }
+            logger.info("Query all buy order list success");
+        } catch (SQLException e) {
+            logger.error("Query all buy order list failed");
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
+        }
+        return buyOrderListInfos;
     }
 }
