@@ -20,7 +20,7 @@ public class ShowAllProduct extends HttpServlet {
         IProductInfoDAO productInfoDAO = new ProductInfoDAO();
         List<ProductInfo> productInfos = new ArrayList<>();/*productInfoDAO.getAllProductInfo();*/
         for (int i = 0; i < 5; i++) {
-            productInfos.add(new ProductInfo(i, 1, 1, "TTTT", new BigDecimal("152.2565"), new BigDecimal("100.2566"), "SDF啊搜地方还哦皮肤的规划司讴歌红负和哦啊是个覅偶阿三哥黑哦噶色UI岁哦瓜熟蒂递易风元素的一首歌费十多个佛山大概福iODFSERFER"));
+            productInfos.add(new ProductInfo(i, 1, "TTTT", new BigDecimal("152.2565"), new BigDecimal("100.2566"), "SDF啊搜地方还哦皮肤的规划司讴歌红负和哦啊是个覅偶阿三哥黑哦噶色UI岁哦瓜熟蒂递易风元素的一首歌费十多个佛山大概福iODFSERFER"));
         }
         request.setAttribute("AllProductInfo", productInfos);
         request.getRequestDispatcher("ShowAllProduct.jsp").forward(request, response);

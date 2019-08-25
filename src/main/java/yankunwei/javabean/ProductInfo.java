@@ -7,20 +7,18 @@ public class ProductInfo {
     
     private long productID;
     private long supplierID;
-    private long supplierOrderID;
     private String productName;
     private BigDecimal productSalePrice;
     private BigDecimal productBuyPrice;
     private String productDescription;
     
     public ProductInfo() {
-        this(-1, -1, -1, null, null, null, null);
+        this(-1, -1, null, null, null, null);
     }
     
-    public ProductInfo(long productID, long supplierID, long supplierOrderID, String productName, BigDecimal productSalePrice, BigDecimal productBuyPrice, String productDescription) {
+    public ProductInfo(long productID, long supplierID, String productName, BigDecimal productSalePrice, BigDecimal productBuyPrice, String productDescription) {
         this.productID = productID;
         this.supplierID = supplierID;
-        this.supplierOrderID = supplierOrderID;
         this.productName = productName;
         this.productSalePrice = productSalePrice;
         this.productBuyPrice = productBuyPrice;
@@ -42,15 +40,6 @@ public class ProductInfo {
     
     public void setSupplierID(long supplierID) {
         this.supplierID = supplierID;
-    }
-    
-    
-    public long getSupplierOrderID() {
-        return supplierOrderID;
-    }
-    
-    public void setSupplierOrderID(long supplierOrderID) {
-        this.supplierOrderID = supplierOrderID;
     }
     
     
