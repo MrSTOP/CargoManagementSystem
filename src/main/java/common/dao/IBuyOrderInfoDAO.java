@@ -10,5 +10,7 @@ public interface IBuyOrderInfoDAO {
     
     boolean insertBuyOrder(List<BuyOrderInfo> buyOrderInfos);
     
+    boolean updateBuyOrderStatus(long supplierOrderID, long productID, long supplierID, int status);
+    
     List<BuyOrderInfo> getAllBuyOrderInfo();
 }
