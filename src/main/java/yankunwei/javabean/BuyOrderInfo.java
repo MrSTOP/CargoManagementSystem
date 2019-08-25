@@ -6,9 +6,9 @@ import java.sql.Timestamp;
 
 public class BuyOrderInfo {
 
-  private long supplierOrderId;
-  private long productId;
-  private long supplierId;
+  private long supplierOrderID;
+  private long productID;
+  private long supplierID;
   private java.sql.Timestamp supplierDate;
   private int supplierStatus;
   private int supplierCount;
@@ -18,40 +18,40 @@ public class BuyOrderInfo {
     this(-1, -1, -1, null, -1, -1, null);
   }
   
-  public BuyOrderInfo(long supplierOrderId, long productId, long supplierId, Timestamp supplierDate, int supplierStatus, int supplierCount, BigDecimal supplierPrice) {
-    this.supplierOrderId = supplierOrderId;
-    this.productId = productId;
-    this.supplierId = supplierId;
+  public BuyOrderInfo(long supplierOrderID, long productID, long supplierID, Timestamp supplierDate, int supplierStatus, int supplierCount, BigDecimal supplierPrice) {
+    this.supplierOrderID = supplierOrderID;
+    this.productID = productID;
+    this.supplierID = supplierID;
     this.supplierDate = supplierDate;
     this.supplierStatus = supplierStatus;
     this.supplierCount = supplierCount;
     this.supplierPrice = supplierPrice;
   }
   
-  public long getSupplierOrderId() {
-    return supplierOrderId;
+  public long getSupplierOrderID() {
+    return supplierOrderID;
   }
 
-  public void setSupplierOrderId(long supplierOrderId) {
-    this.supplierOrderId = supplierOrderId;
-  }
-
-
-  public long getProductId() {
-    return productId;
-  }
-
-  public void setProductId(long productId) {
-    this.productId = productId;
+  public void setSupplierOrderID(long supplierOrderID) {
+    this.supplierOrderID = supplierOrderID;
   }
 
 
-  public long getSupplierId() {
-    return supplierId;
+  public long getProductID() {
+    return productID;
   }
 
-  public void setSupplierId(long supplierId) {
-    this.supplierId = supplierId;
+  public void setProductID(long productID) {
+    this.productID = productID;
+  }
+
+
+  public long getSupplierID() {
+    return supplierID;
+  }
+
+  public void setSupplierID(long supplierID) {
+    this.supplierID = supplierID;
   }
 
 
