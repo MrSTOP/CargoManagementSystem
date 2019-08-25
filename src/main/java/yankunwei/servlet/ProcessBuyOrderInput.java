@@ -22,7 +22,7 @@ public class ProcessBuyOrderInput extends HttpServlet {
         IBuyOrderInfoDAO buyOrderInfoDAO = new BuyOrderInfoDAO();
         Gson gson = new Gson();
         List<BuyOrderInfo> buyOrderInfos = gson.fromJson(JSONData, new TypeToken<ArrayList<BuyOrderInfo>>(){}.getType());
-        //response.getWriter().write(String.valueOf(buyOrderInfoDAO.insertBuyOrder(buyOrderInfos)));
+        response.getWriter().write(String.valueOf(buyOrderInfoDAO.insertBuyOrder(buyOrderInfos)));
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
