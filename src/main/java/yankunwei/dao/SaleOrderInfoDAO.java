@@ -62,12 +62,12 @@ public class SaleOrderInfoDAO implements ISaleOrderInfoDAO {
                 preparedStatement.setInt(7, ISaleOrderInfoDAO.RECEIVE_STATE_NOT_RECEIVE);
                 preparedStatement.executeUpdate();
             }
+            logger.info("Insert new saleOrder success");
         } catch (SQLException e) {
             logger.error("Insert new saleOrder failed");
             e.printStackTrace();
         } finally {
             DataBaseHelper.closeResource(null, preparedStatement, connection);
         }
-        logger.info("Insert new saleOrder success");
     }
 }
