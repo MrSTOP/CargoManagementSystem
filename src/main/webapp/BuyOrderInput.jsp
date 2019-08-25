@@ -39,20 +39,17 @@
                         var productID = $("#ProductID").val();
                         var supplierID = $("#SupplierID").val();
                         var supplierCount = $("#SupplierCount").val();
-                        var supplierPrice = $("#SupplierPrice").val();
                         var numberRegExp = /^[0-9]+$/;
                         var bigDecimalRegExp = /^(([0-9]+)|([0-9]+\.[0-9]{1,2}))$/;
                         if (!productID.match(numberRegExp) ||
                             !supplierID.match(numberRegExp) ||
-                            !supplierCount.match(numberRegExp) ||
-                            !supplierPrice.match(bigDecimalRegExp)) {
+                            !supplierCount.match(numberRegExp)) {
                             alert("有未填写的项或格式错误");
                         } else {
                             var cell = "<tr>";
                             cell += "<td>" + productID + "</td>";
                             cell += "<td>" + supplierID + "</td>";
                             cell += "<td>" + supplierCount + "</td>";
-                            cell += "<td>" + supplierPrice + "</td>";
                             cell += "<td><button type='button' onclick='console.log($(this).parent().parent().remove())'>删除</button></td>";
                             cell += "</tr>";
                             $("#SupplierOrderList").append(cell);
@@ -64,7 +61,6 @@
                             var productID;
                             var supplierID;
                             var supplierCount;
-                            var supplierPrice;
                             console.log($(element).children("td").html());
                             $(element).children("td").each(function (index, element) {
                                 switch (index) {
@@ -78,13 +74,11 @@
                                         supplierCount = $(element).html();
                                         break;
                                     case 3:
-                                        supplierPrice = $(element).html();
-                                        break;
                                     case 4:
                                         break;
                                 }
                             });
-                            JSONData[index] = {"productID": productID, "supplierID": supplierID, "supplierCount": supplierCount, "supplierPrice": supplierPrice};
+                            JSONData[index] = {"productID": productID, "supplierID": supplierID, "supplierCount": supplierCount};
                         });
                         $.ajax({
                             url: "ProcessBuyOrderInput",
@@ -115,7 +109,6 @@
                     <td>产品ID</td>
                     <td>供应商ID</td>
                     <td>进货数量</td>
-                    <td>进货价格</td>
                     <td>操作</td>
                 </tr>
                 </thead>
@@ -130,7 +123,6 @@
                     <td>产品ID</td>
                     <td>供应商ID</td>
                     <td>进货数量</td>
-                    <td>进货价格</td>
                     <td>操作</td>
                 </tr>
             </thead>
@@ -155,7 +147,6 @@
                         </div>
                     </td>
                     <td><input type="text" name="SupplierCount" id="SupplierCount"></td>
-                    <td><input type="text" name="SupplierPrice" id="SupplierPrice"></td>
                     <td><button id="AddSupplierOrder">添加</button></td>
                 </tr>
             </tbody>

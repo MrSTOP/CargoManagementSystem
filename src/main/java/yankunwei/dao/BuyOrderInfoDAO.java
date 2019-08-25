@@ -1,12 +1,14 @@
 package yankunwei.dao;
 
 import common.dao.IBuyOrderInfoDAO;
+import common.dao.IProductInfoDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import yankunwei.javabean.BuyOrderInfo;
 import yankunwei.javabean.BuyOrderListInfo;
 import yankunwei.utils.DataBaseHelper;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,12 @@ public class BuyOrderInfoDAO implements IBuyOrderInfoDAO {
         PreparedStatement preparedStatement = null;
         long supplierOrderID = getNewSupplierOrderID();
         logger.info("Insert new buy order");
+        BigDecimal totalPrice = new BigDecimal("0.0");
+        IProductInfoDAO productInfoDAO = new ProductInfoDAO();
+        for (BuyOrderInfo buyOrderInfo: buyOrderInfos) {
+            BigDecimal productPrice = productInfoDAO.getProductBuyPriceByID(buyOrderInfo.getProductID());
+            totalPrice = totalPrice.add(productPrice.multiply(new BigDecimal(buyOrderInfo.getSupplierCount())));
+        }
         try {
             connection = DataBaseHelper.getConnection();
             //language=SQL
@@ -32,7 +40,7 @@ public class BuyOrderInfoDAO implements IBuyOrderInfoDAO {
                 preparedStatement.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
                 preparedStatement.setInt(5, IBuyOrderInfoDAO.SUPPLIER_STATE_NOT_RECEIVED);
                 preparedStatement.setInt(6, buyOrderInfo.getSupplierCount());
-                preparedStatement.setBigDecimal(7, buyOrderInfo.getSupplierPrice());
+                preparedStatement.setBigDecimal(7, totalPrice);
                 preparedStatement.executeUpdate();
             }
             logger.info("Insert new buy order success");
