@@ -87,7 +87,7 @@
                         });
                         $.ajax({
                             url: "ProcessBuyOrderInput",
-                            data: JSONData,
+                            data: "BuyOrder=" + JSON.stringify(JSONData),
                             type: "post",
                             success: function (data) {
                                 if (data === "true") {
