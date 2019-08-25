@@ -49,7 +49,7 @@ public class ProductInfoDAO implements IProductInfoDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         BigDecimal price = null;
-        logger.info("Query product price. productID:{}", productID);
+        logger.info("Query product sale price. productID:{}", productID);
         try {
             connection = DataBaseHelper.getConnection();
             //language=SQL
@@ -61,12 +61,39 @@ public class ProductInfoDAO implements IProductInfoDAO {
                 price = resultSet.getBigDecimal("ProductSalePrice");
             }
         } catch (SQLException e) {
-            logger.error("Query product price failed.");
+            logger.error("Query product sale price failed.");
             e.printStackTrace();
         } finally {
             DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
         }
-        logger.info("Query product price success. productID:{} price:{}", productID, price);
+        logger.info("Query product sale price success. productID:{} price:{}", productID, price);
+        return price;
+    }
+    
+    @Override
+    public BigDecimal getProductBuyPriceByID(long productID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        BigDecimal price = null;
+        logger.info("Query product buy price. productID:{}", productID);
+        try {
+            connection = DataBaseHelper.getConnection();
+            //language=SQL
+            String SQL = "SELECT \"ProductBuyPrice\" FROM \"Product\" WHERE \"ProductID\"=?";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setLong(1, productID);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                price = resultSet.getBigDecimal("ProductBuyPrice");
+            }
+        } catch (SQLException e) {
+            logger.error("Query product buy price failed.");
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
+        }
+        logger.info("Query product buy price success. productID:{} price:{}", productID, price);
         return price;
     }
     
