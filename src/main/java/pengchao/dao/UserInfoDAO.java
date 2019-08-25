@@ -216,4 +216,37 @@ public class UserInfoDAO implements IUserInfoDAO {
         logger.info("Find All User Success");
         return userInfos;
     }
+
+    @Override
+    public boolean IsIDUseful(long userID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        logger.info("Check UserID");
+        try {
+            connection = DataBaseHelper.getConnection();
+            String SQL = "SELECT * FROM \"User\" WHERE \"UserID\" = ?";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setLong(1,userID);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next())
+            {
+                logger.error("This ID has been used");
+                return true;    //找到了ID存在
+            }
+            else{
+                logger.info("This ID is useful");
+                return false;
+            }
+
+        } catch (SQLException e) {
+            logger.error("Find UserID Failed");
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(null, preparedStatement, connection);
+        }
+
+        return true;
+
+    }
 }

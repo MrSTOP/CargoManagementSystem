@@ -14,4 +14,6 @@ public interface IUserInfoDAO {
     boolean deleteUser(long userID);
 
     List<UserInfo> getAllUserInfo();
+
+    boolean IsIDUseful(long userID);
 }
