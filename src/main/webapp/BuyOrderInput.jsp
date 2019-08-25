@@ -147,7 +147,7 @@
                     <td>
                         <div style="position: relative;">
                             <select id="SupplierID" name="SupplierID">
-                                <c:forEach items="${requestScope.AllSupplierID}" var="supplierID">
+                                <c:forEach items="${requestScope.AllSupplier}" var="supplierID">
                                     <option>${supplierID}</option>
                                 </c:forEach>
                             </select>
