@@ -169,11 +169,12 @@ public class BuyOrderInfoDAO implements IBuyOrderInfoDAO {
                         resultSet.getInt("SupplierCount"),
                         resultSet.getBigDecimal("SupplierPrice")
                 );
+                BigDecimal productBuyPrice = productInfoDAO.
+                        getProductBuyPriceByID(buyOrderInfo.getProductID());
                 buyOrderInfo.setCurrentProductPrice(
-                        new BigDecimal(
-                                buyOrderInfo.getSupplierCount()).multiply(
-                                        productInfoDAO.getProductBuyPriceByID(
-                                                buyOrderInfo.getProductID())));
+                        new BigDecimal(buyOrderInfo.getSupplierCount()).
+                                multiply(productBuyPrice));
+                buyOrderInfo.setCurrentProductBuyPrice(productBuyPrice);
                 buyOrderInfos.add(buyOrderInfo);
             }
             logger.info("Query all buy order by id success");

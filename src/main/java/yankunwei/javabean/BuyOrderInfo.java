@@ -15,6 +15,7 @@ public class BuyOrderInfo {
     private int supplierStatus;
     private int supplierCount;
     private BigDecimal currentProductPrice;
+    private BigDecimal currentProductBuyPrice;
     private BigDecimal supplierPrice;
     
     public BuyOrderInfo() {
@@ -96,6 +97,14 @@ public class BuyOrderInfo {
     
     public void setCurrentProductPrice(BigDecimal currentProductPrice) {
         this.currentProductPrice = currentProductPrice;
+    }
+    
+    public BigDecimal getCurrentProductBuyPrice() {
+        return currentProductBuyPrice;
+    }
+    
+    public void setCurrentProductBuyPrice(BigDecimal currentProductBuyPrice) {
+        this.currentProductBuyPrice = currentProductBuyPrice;
     }
     
     public BigDecimal getSupplierPrice() {

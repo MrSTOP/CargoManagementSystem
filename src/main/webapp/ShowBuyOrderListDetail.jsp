@@ -45,8 +45,8 @@
                             type: "post",
                             success: function (data) {
                                 if (data === "true") {
-                                    line.children("td:nth-of-type(6)").html("已到货");
-                                    line.children("td:nth-of-type(8)").children().attr("disabled", "disabled");
+                                    line.children("td:nth-of-type(8)").html("已到货");
+                                    line.children("td:nth-of-type(9)").children().attr("disabled", "disabled");
                                 } else {
                                     alert("标记失败");
                                 }
@@ -70,8 +70,9 @@
             <td>供应商编号</td>
             <td>订货日期</td>
             <td>订货数量</td>
-            <td>到货情况</td>
+            <td>进价</td>
             <td>总价</td>
+            <td>到货情况</td>
             <td>操作</td>
         </tr>
         </thead>
@@ -83,8 +84,9 @@
                     <td>${buyOrderInfo.supplierID}</td>
                     <td>${buyOrderInfo.getSupplierDateStr()}</td>
                     <td>${buyOrderInfo.supplierCount}</td>
-                    <td>${buyOrderInfo.supplierStatus == requestScope.SUPPLIER_STATE_RECEIVED ? "已到货" : "未到货"}</td>
+                    <td>${buyOrderInfo.currentProductBuyPrice}</td>
                     <td>${buyOrderInfo.currentProductPrice}</td>
+                    <td>${buyOrderInfo.supplierStatus == requestScope.SUPPLIER_STATE_RECEIVED ? "已到货" : "未到货"}</td>
                     <td><button name="MarkAsReceived" ${buyOrderInfo.supplierStatus == requestScope.SUPPLIER_STATE_RECEIVED ? "disabled" : ""}>标记为已到货</button></td>
                 </tr>
             </c:forEach>
