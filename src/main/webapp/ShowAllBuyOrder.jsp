@@ -46,7 +46,7 @@
                     <td><a href="ShowBuyOrderListDetail?BuyOrderListID=${buyOrderList.buyOrderID}">${buyOrderList.buyOrderID}</a></td>
                     <td>${buyOrderList.getTimeStr()}</td>
                     <td>${buyOrderList.totalPrice}</td>
-                    <td>${buyOrderList.isAllReceived()}</td>
+                    <td>${buyOrderList.isAllReceived()? "全部到货" : "未全部到货"}</td>
                 </tr>
             </c:forEach>
             </tbody>
