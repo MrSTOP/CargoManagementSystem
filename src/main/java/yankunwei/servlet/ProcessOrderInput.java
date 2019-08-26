@@ -26,8 +26,7 @@ public class ProcessOrderInput extends HttpServlet {
         logger.debug(JSONData);
         Gson gson = new Gson();
         List<OrderInfo> orderInfos = gson.fromJson(JSONData, new TypeToken<ArrayList<OrderInfo>>(){}.getType());
-//        saleOrderInfoDAO.insertSaleOrder(orderInfos);
-        response.sendRedirect("OrderInput");
+        response.getWriter().write(String.valueOf(saleOrderInfoDAO.insertSaleOrder(orderInfos)));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,7 +1,5 @@
 package yankunwei.servlet;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import common.dao.IBuyOrderInfoDAO;
 import yankunwei.dao.BuyOrderInfoDAO;
 import yankunwei.javabean.BuyOrderInfo;
@@ -12,17 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "ProcessBuyOrderInput", urlPatterns = "/ProcessBuyOrderInput")
-public class ProcessBuyOrderInput extends HttpServlet {
+@WebServlet(name = "ShowBuyOrderListDetail", urlPatterns = "/ShowBuyOrderListDetail")
+public class ShowBuyOrderListDetail extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String JSONData = request.getParameter("BuyOrder");
+        long buyOrderListID = Long.parseLong(request.getParameter("BuyOrderListID"));
         IBuyOrderInfoDAO buyOrderInfoDAO = new BuyOrderInfoDAO();
-        Gson gson = new Gson();
-        List<BuyOrderInfo> buyOrderInfos = gson.fromJson(JSONData, new TypeToken<ArrayList<BuyOrderInfo>>(){}.getType());
-        response.getWriter().write(String.valueOf(buyOrderInfoDAO.insertBuyOrder(buyOrderInfos)));
+        List<BuyOrderInfo> buyOrderInfos = buyOrderInfoDAO.getAllBuyOrderInfoByID(buyOrderListID);
+        request.setAttribute("AllBuyOrderInfo", buyOrderInfos);
+        request.setAttribute("SUPPLIER_STATE_RECEIVED", IBuyOrderInfoDAO.SUPPLIER_STATE_RECEIVED);
+        request.getRequestDispatcher("ShowBuyOrderListDetail.jsp").forward(request, response);
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -26,6 +26,7 @@ public class ProductInfoDAO implements IProductInfoDAO {
         logger.info("Query All ProductID");
         try {
             connection = DataBaseHelper.getConnection();
+            //language=SQL
             String SQL = "SELECT \"ProductID\" FROM \"Product\"";
             preparedStatement = connection.prepareStatement(SQL);
             resultSet = preparedStatement.executeQuery();
@@ -48,9 +49,10 @@ public class ProductInfoDAO implements IProductInfoDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         BigDecimal price = null;
-        logger.info("Query product price. productID:{}", productID);
+        logger.info("Query product sale price. productID:{}", productID);
         try {
             connection = DataBaseHelper.getConnection();
+            //language=SQL
             String SQL = "SELECT \"ProductSalePrice\" FROM \"Product\" WHERE \"ProductID\"=?";
             preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setLong(1, productID);
@@ -59,12 +61,39 @@ public class ProductInfoDAO implements IProductInfoDAO {
                 price = resultSet.getBigDecimal("ProductSalePrice");
             }
         } catch (SQLException e) {
-            logger.error("Query product price failed.");
+            logger.error("Query product sale price failed.");
             e.printStackTrace();
         } finally {
             DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
         }
-        logger.info("Query product price success. productID:{} price:{}", productID, price);
+        logger.info("Query product sale price success. productID:{} price:{}", productID, price);
+        return price;
+    }
+    
+    @Override
+    public BigDecimal getProductBuyPriceByID(long productID) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        BigDecimal price = null;
+        logger.info("Query product buy price. productID:{}", productID);
+        try {
+            connection = DataBaseHelper.getConnection();
+            //language=SQL
+            String SQL = "SELECT \"ProductBuyPrice\" FROM \"Product\" WHERE \"ProductID\"=?";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setLong(1, productID);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                price = resultSet.getBigDecimal("ProductBuyPrice");
+            }
+        } catch (SQLException e) {
+            logger.error("Query product buy price failed.");
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
+        }
+        logger.info("Query product buy price success. productID:{} price:{}", productID, price);
         return price;
     }
     
@@ -77,6 +106,7 @@ public class ProductInfoDAO implements IProductInfoDAO {
         logger.info("Query product info ID:{}", productInfo);
         try {
             connection = DataBaseHelper.getConnection();
+            //language=SQL
             String SQL = "SELECT * FROM \"Product\" WHERE \"ProductID\"=?";
             preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setLong(1, productID);
@@ -84,7 +114,6 @@ public class ProductInfoDAO implements IProductInfoDAO {
             while (resultSet.next()) {
                 productInfo.setProductID(resultSet.getLong("ProductID"));
                 productInfo.setSupplierID(resultSet.getLong("SupplierID"));
-                productInfo.setSupplierOrderID(resultSet.getLong("SupplierOrderID"));
                 productInfo.setProductName(resultSet.getString("ProductName"));
                 productInfo.setProductSalePrice(resultSet.getBigDecimal("ProductSalePrice"));
                 productInfo.setProductBuyPrice(resultSet.getBigDecimal("ProductBuyPrice"));
@@ -107,14 +136,14 @@ public class ProductInfoDAO implements IProductInfoDAO {
         logger.info("Insert new product Name:{}", productInfo.getProductName());
         try {
             connection = DataBaseHelper.getConnection();
-            String SQL = "INSERT INTO \"Product\"(\"ProductID\", \"SupplierID\", \"SupplierOrderID\", \"ProductName\", \"ProductSalePrice\", \"ProductBuyPrice\", \"ProductDescription\") VALUES (PRODUCT_ID_SEQ.nextval, ?, ?, ?, ?, ?, ?)";
+            //language=SQL
+            String SQL = "INSERT INTO \"Product\"(\"ProductID\", \"SupplierID\", \"ProductName\", \"ProductSalePrice\", \"ProductBuyPrice\", \"ProductDescription\") VALUES (PRODUCT_ID_SEQ.nextval, ?, ?, ?, ?, ?)";
             preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setLong(1, productInfo.getSupplierID());
-            preparedStatement.setLong(2, productInfo.getSupplierOrderID());
-            preparedStatement.setString(3, productInfo.getProductName());
-            preparedStatement.setBigDecimal(4, productInfo.getProductSalePrice());
-            preparedStatement.setBigDecimal(5, productInfo.getProductBuyPrice());
-            preparedStatement.setString(6, productInfo.getProductDescription());
+            preparedStatement.setString(2, productInfo.getProductName());
+            preparedStatement.setBigDecimal(3, productInfo.getProductSalePrice());
+            preparedStatement.setBigDecimal(4, productInfo.getProductBuyPrice());
+            preparedStatement.setString(5, productInfo.getProductDescription());
             if (preparedStatement.executeUpdate() == 1) {
                 logger.info("Insert new product success");
                 return true;
@@ -138,16 +167,16 @@ public class ProductInfoDAO implements IProductInfoDAO {
         logger.info("Update product info ID:{}", productInfo.getProductID());
         try {
             connection = DataBaseHelper.getConnection();
-            String SQL = "UPDATE \"Product\" SET \"ProductID\"=?, \"SupplierID\"=?, \"SupplierOrderID\"=?, \"ProductName\"=?, \"ProductSalePrice\"=?, \"ProductBuyPrice\"=?, \"ProductDescription\"=? WHERE \"ProductID\"=?";
+            //language=SQL
+            String SQL = "UPDATE \"Product\" SET \"ProductID\"=?, \"SupplierID\"=?, \"ProductName\"=?, \"ProductSalePrice\"=?, \"ProductBuyPrice\"=?, \"ProductDescription\"=? WHERE \"ProductID\"=?";
             preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setLong(1, productInfo.getProductID());
             preparedStatement.setLong(2, productInfo.getSupplierID());
-            preparedStatement.setLong(3, productInfo.getSupplierOrderID());
-            preparedStatement.setString(4, productInfo.getProductName());
-            preparedStatement.setBigDecimal(5, productInfo.getProductSalePrice());
-            preparedStatement.setBigDecimal(6, productInfo.getProductBuyPrice());
-            preparedStatement.setString(7, productInfo.getProductDescription());
-            preparedStatement.setLong(8, productInfo.getProductID());
+            preparedStatement.setString(3, productInfo.getProductName());
+            preparedStatement.setBigDecimal(4, productInfo.getProductSalePrice());
+            preparedStatement.setBigDecimal(5, productInfo.getProductBuyPrice());
+            preparedStatement.setString(6, productInfo.getProductDescription());
+            preparedStatement.setLong(7, productInfo.getProductID());
             if (preparedStatement.executeUpdate() == 1) {
                 logger.info("Update product info success");
                 return true;
@@ -175,6 +204,7 @@ public class ProductInfoDAO implements IProductInfoDAO {
         logger.info("Delete product ID:{}", productID);
         try {
             connection = DataBaseHelper.getConnection();
+            //language=SQL
             String SQL = "DELETE FROM \"Product\" WHERE \"ProductID\"=?";
             preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setLong(1, productID);
@@ -203,6 +233,7 @@ public class ProductInfoDAO implements IProductInfoDAO {
         logger.info("Query all product info");
         try {
             connection = DataBaseHelper.getConnection();
+            //language=SQL
             String SQL = "SELECT * FROM \"Product\"";
             preparedStatement = connection.prepareStatement(SQL);
             resultSet = preparedStatement.executeQuery();
@@ -210,7 +241,6 @@ public class ProductInfoDAO implements IProductInfoDAO {
                 ProductInfo productInfo = new ProductInfo(
                         resultSet.getLong("ProductID"),
                         resultSet.getLong("SupplierID"),
-                        resultSet.getLong("SupplierOrderID"),
                         resultSet.getString("ProductName"),
                         resultSet.getBigDecimal("ProductSalePrice"),
                         resultSet.getBigDecimal("ProductBuyPrice"),
