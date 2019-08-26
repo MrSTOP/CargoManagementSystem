@@ -15,7 +15,7 @@ public class DeleteSupplier extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ISupplierInfoDAO iSupplierInfoDAO = new SupplierDAO();
         long SupplierID = Long.parseLong(request.getParameter("SupplierID"));
-        response.getWriter().write(String.valueOf(iSupplierInfoDAO.delterSupplier(SupplierID)));
+        response.getWriter().write(String.valueOf(iSupplierInfoDAO.deleteSupplier(SupplierID)));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
