@@ -40,7 +40,7 @@ public class SaleOrderInfoDAO implements ISaleOrderInfoDAO {
     }
     
     @Override
-    public void insertSaleOrder(List<OrderInfo> orderInfos) {
+    public boolean insertSaleOrder(List<OrderInfo> orderInfos) {
         IProductInfoDAO productInfoDAO = new ProductInfoDAO();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -65,11 +65,13 @@ public class SaleOrderInfoDAO implements ISaleOrderInfoDAO {
                 preparedStatement.executeUpdate();
             }
             logger.info("Insert new saleOrder success");
+            return true;
         } catch (SQLException e) {
             logger.error("Insert new saleOrder failed");
             e.printStackTrace();
         } finally {
             DataBaseHelper.closeResource(null, preparedStatement, connection);
         }
+        return false;
     }
 }

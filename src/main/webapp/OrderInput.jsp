@@ -79,6 +79,21 @@
                             JSONData[index] = {"userID": userID, "productID": productID, "productCount": productCount};
                         });
                         $("#JSONOrderInfoStr").val(JSON.stringify(JSONData));
+                        $.ajax({
+                            url: "ProcessOrderInput",
+                            data: "JSONOrderInfoStr=" + JSON.stringify(JSONData),
+                            type: "post",
+                            success: function (data) {
+                                if (data === "true") {
+                                    window.location.reload();
+                                } else {
+                                    alert("添加订单失败");
+                                }
+                            },
+                            error: function () {
+                                alert("添加订单失败");
+                            }
+                        })
                     }
                 });
                 $("[name=UserID]").bind({
@@ -107,7 +122,7 @@
                 </thead>
                 <tbody></tbody>
             </table>
-            <input value="提交" type="submit" id="SubmitOrder">
+            <input value="提交" type="button" id="SubmitOrder">
         </form>
         <table style="margin: auto">
             <thead>
