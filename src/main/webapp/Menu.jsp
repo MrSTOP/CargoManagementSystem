@@ -81,7 +81,6 @@
                     <button onclick="window.open('./ShowAllProduct', 'MainArea');" class="buttonDefault sub_menu_button">所有产品</button>
                     <button onclick="window.open('./NewProductInput', 'MainArea');" class="buttonDefault sub_menu_button">添加产品</button>
                     <button onclick="window.open('./BuyOrderInput', 'MainArea');" class="buttonDefault sub_menu_button">添加进货单</button>
-                    <button onclick="window.open('./ShowAllBuyOrderListStatus', 'MainArea');" class="buttonDefault sub_menu_button">进货单状态</button>
                 </div>
             </div>
             <div class="div_margin"><button onclick="window.open('./OrderInput', 'MainArea');" class="buttonDefault">添加订单</button></div>
@@ -90,7 +89,7 @@
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">收入流水</button></div>
             <div class="div_margin"><button onclick="window.open('./ShowBankBalance', 'MainArea');" class="buttonDefault">账户余额</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">客户信息</button></div>
-            <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">进货情况</button></div>
+            <div class="div_margin"><button onclick="window.open('./ShowAllBuyOrderListStatus', 'MainArea');" class="buttonDefault">进货情况</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">发货情况</button></div>
         </div>
     </body>
