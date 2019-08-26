@@ -14,7 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductInfoDAO implements IProductInfoDAO {
+public class
+ProductInfoDAO implements IProductInfoDAO {
     private Logger logger = LogManager.getLogger(ProductInfoDAO.class);
     
     @Override

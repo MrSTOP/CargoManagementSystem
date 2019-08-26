@@ -78,7 +78,7 @@ public class SupplierDAO implements ISupplierInfoDAO {
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 SupplierInfo supplierInfo = new SupplierInfo(
-                        resultSet.getLong("SuppllierID"),
+                        resultSet.getLong("SupplierID"),
                         resultSet.getString("SupplierName"),
                         resultSet.getString("SupplierDescription"),
                         resultSet.getString("SupplierAddress"));

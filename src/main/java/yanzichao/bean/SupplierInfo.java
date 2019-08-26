@@ -1,4 +1,4 @@
-﻿package yanzichao.bean;
+package yanzichao.bean;
 
 public class SupplierInfo {
     private long supplierID;
@@ -6,7 +6,6 @@ public class SupplierInfo {
     private String supplierDescription;
     private String supplierAddress;
     public SupplierInfo() {
-
     }
     public SupplierInfo(long supplierID, String supplierName, String supplierDescription, String supplierAddress)
     {

@@ -85,7 +85,7 @@
             </div>
             <div class="div_margin"><button onclick="window.open('./OrderInput', 'MainArea');" class="buttonDefault">添加订单</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">供应商</button></div>
-            <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">支出流水</button></div>
+            <div class="div_margin"><button onclick="window.open('./GetAllSupplier', 'MainArea');" class="buttonDefault">支出流水</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">收入流水</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">账户余额</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">客户信息</button></div>
