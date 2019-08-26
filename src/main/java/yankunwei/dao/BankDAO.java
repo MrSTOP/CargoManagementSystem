@@ -23,7 +23,8 @@ public class BankDAO implements IBankDAO {
         logger.info("Query company account balance");
         try {
             connection = DataBaseHelper.getConnection();
-            String SQL = "SELECT \"CompanyAccount\" FROM \"Bank\"";
+            //language=SQL
+            String SQL = "SELECT * FROM \"Bank\"";
             preparedStatement = connection.prepareStatement(SQL);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

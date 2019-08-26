@@ -88,7 +88,7 @@
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">供应商</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">支出流水</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">收入流水</button></div>
-            <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">账户余额</button></div>
+            <div class="div_margin"><button onclick="window.open('./ShowBankBalance', 'MainArea');" class="buttonDefault">账户余额</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">客户信息</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">进货情况</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">发货情况</button></div>
