@@ -87,11 +87,11 @@
                                 if (data === "true") {
                                     window.location.reload();
                                 } else {
-                                    alert("添加订单失败");
+                                    alert("添加订单失败,请检查产品ID、用户ID是否存在，产品数量是否超过库存");
                                 }
                             },
                             error: function () {
-                                alert("添加订单失败");
+                                alert(xhr.status + " " + xhr.statusText);
                             }
                         })
                     }
