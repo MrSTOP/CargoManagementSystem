@@ -19,7 +19,6 @@ public class ExecModifyProduct extends HttpServlet {
         IProductInfoDAO productInfoDAO = new ProductInfoDAO();
         productInfo.setProductID(Long.parseLong(request.getParameter("ProductID")));
         productInfo.setSupplierID(Long.parseLong(request.getParameter("SupplierID")));
-        productInfo.setSupplierOrderID(Long.parseLong(request.getParameter("SupplierOrderID")));
         productInfo.setProductName(request.getParameter("ProductName"));
         productInfo.setProductSalePrice(new BigDecimal(request.getParameter("ProductSalePrice")));
         productInfo.setProductBuyPrice(new BigDecimal(request.getParameter("ProductBuyPrice")));

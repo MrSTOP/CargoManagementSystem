@@ -22,7 +22,7 @@ public class ProcessNewProductInput extends HttpServlet {
         productInfo.setProductSalePrice(new BigDecimal(request.getParameter("ProductSalePrice")));
         productInfo.setProductBuyPrice(new BigDecimal(request.getParameter("ProductBuyPrice")));
         productInfo.setProductDescription(request.getParameter("ProductDescription"));
-        response.getWriter().write(String.valueOf(/*productInfoDAO.insertProduct(productInfo)*/true));
+        response.getWriter().write(String.valueOf(productInfoDAO.insertProduct(productInfo)));
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

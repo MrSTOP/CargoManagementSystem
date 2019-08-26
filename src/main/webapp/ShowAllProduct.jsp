@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: MrST
@@ -72,7 +72,6 @@
     <tr>
         <td>产品ID</td>
         <td>供应商ID</td>
-        <td>进货单ID</td>
         <td>产品名称</td>
         <td>产品售价</td>
         <td>产品进价</td>
@@ -81,11 +80,10 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${requestScope.AllProductInfo}" var="productInfo">
+    <c:forEach items="${requestScope.AllProductInfo}" var="userInfo">
         <tr>
             <td>${productInfo.productID}</td>
             <td>${productInfo.supplierID}</td>
-            <td>${productInfo.supplierOrderID}</td>
             <td>${productInfo.productName}</td>
             <td>${productInfo.productSalePrice}</td>
             <td>${productInfo.productBuyPrice}</td>
