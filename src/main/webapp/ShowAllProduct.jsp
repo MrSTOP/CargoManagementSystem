@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: MrST
@@ -80,7 +80,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${requestScope.AllProductInfo}" var="productInfo">
+    <c:forEach items="${requestScope.AllProductInfo}" var="userInfo">
         <tr>
             <td>${productInfo.productID}</td>
             <td>${productInfo.supplierID}</td>

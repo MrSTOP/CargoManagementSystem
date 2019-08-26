@@ -33,10 +33,10 @@
         <script type="text/javascript">
             $(function () {
                 $(document).ready(function () {
-                    $("#SupplierID").editableSelect();
+                    $("#SupplierID").editableSelect();                   //实现下拉表快捷选择
                     $("#AddProduct").click(function () {
-                        var numRegExp = /^[0-9]+$/;
-                        var bigDecimalRegExp = /^(([0-9]+)|([0-9]+\.[0-9]{1,2}))$/;
+                        var numRegExp = /^[0-9]+$/;                           //从0开始的数
+                        var bigDecimalRegExp = /^(([0-9]+)|([0-9]+\.[0-9]{1,2}))$/;        //两位小数
                         var supplierID = $("#SupplierID").val();
                         var productName = $("#ProductName").val();
                         var productSalePrice = $("#ProductSalePrice").val();

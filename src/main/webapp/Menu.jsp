@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: MrST
   Date: 2019/3/28
@@ -62,6 +62,11 @@
                     }, function () {
                         $(this).children(".sub_menu").slideUp("fast");
                     });
+                    $("#UserManage").hover(function () {
+                        $(this).children(".sub_menu").slideDown("fast");
+                    },function () {
+                        $(this).children(".sub_menu").slideUp("fast");
+                    })
                 });
             });
         </script>
@@ -88,7 +93,15 @@
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">支出流水</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">收入流水</button></div>
             <div class="div_margin"><button onclick="window.open('./ShowBankBalance', 'MainArea');" class="buttonDefault">账户余额</button></div>
-            <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">客户信息</button></div>
+            <div class="div_margin" id="UserManage">
+                <button class="buttonDefault">客户信息</button>
+                <div class="sub_menu" style="display: none;">
+                    <button onclick="window.open('./FindAllUser', 'MainArea');" class="buttonDefault sub_menu_button">所有客户</button>
+                    <button onclick="window.open('./NewUser.jsp', 'MainArea');" class="buttonDefault sub_menu_button">添加客户</button>
+                    <button onclick="window.open('./FindUser', 'MainArea');" class="buttonDefault sub_menu_button">查询客户</button>
+                </div>
+            </div>
+
             <div class="div_margin"><button onclick="window.open('./ShowAllBuyOrderListStatus', 'MainArea');" class="buttonDefault">进货情况</button></div>
             <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">发货情况</button></div>
         </div>
