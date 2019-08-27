@@ -55,6 +55,7 @@
             <input type="text" name="UserName" placeholder="用户名"><br/>
             <input type="password" name="Password" placeholder="密码"><br/>
             <input type="button" value="登录">
+            <button onclick="window.location.href='register.jsp'">注册</button>
         </div>
     </body>
 </html>

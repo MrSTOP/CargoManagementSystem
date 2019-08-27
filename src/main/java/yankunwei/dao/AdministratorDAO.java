@@ -34,4 +34,28 @@ public class AdministratorDAO implements IAdministratorDAO {
         }
         return false;
     }
+    
+    @Override
+    public boolean insertAdministrator(String userName, String passwordEncrypted) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = DataBaseHelper.getConnection();
+            //language=SQL
+            String SQL = "INSERT INTO \"Administrator\"(\"UserName\", \"PassWord\") VALUES (?, ?)";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, userName);
+            preparedStatement.setString(2, passwordEncrypted);
+            if (preparedStatement.executeUpdate() == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(null, preparedStatement, connection);
+        }
+        return false;
+    }
 }
