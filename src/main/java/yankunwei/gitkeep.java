@@ -17,6 +17,7 @@ public class gitkeep {
     public static void main(String[] args) {
         String JSONData = "[{\"userID\":\"123\",\"productID\":\"456\",\"productCount\":\"789\"},{\"userID\":\"123\",\"productID\":\"45\",\"productCount\":\"789\"},{\"userID\":\"123\",\"productID\":\"4\",\"productCount\":\"789\"},{\"userID\":\"123\",\"productID\":\"5\",\"productCount\":\"789\"}]";
         Gson gson = new Gson();
+        
         List<OrderInfo> orderInfos = gson.fromJson(JSONData, new TypeToken<ArrayList<OrderInfo>>(){}.getType());
         for (OrderInfo i: orderInfos) {
             System.out.println(i);

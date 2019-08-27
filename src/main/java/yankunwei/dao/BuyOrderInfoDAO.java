@@ -26,6 +26,7 @@ public class BuyOrderInfoDAO implements IBuyOrderInfoDAO {
         IProductInfoDAO productInfoDAO = new ProductInfoDAO();
         for (BuyOrderInfo buyOrderInfo: buyOrderInfos) {
             BigDecimal productPrice = productInfoDAO.getProductBuyPriceByID(buyOrderInfo.getProductID());
+            buyOrderInfo.setSupplierID(productInfoDAO.getSupplierByID(buyOrderInfo.getProductID()));
             totalPrice = totalPrice.add(productPrice.multiply(new BigDecimal(buyOrderInfo.getSupplierCount())));
         }
         try {

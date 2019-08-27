@@ -46,6 +46,7 @@
                             success: function (data) {
                                 if (data === "true") {
                                     line.remove();
+                                    alert("删除成功！");
                                 } else {
                                     alert("删除失败！");
                                 }

@@ -131,6 +131,33 @@ ProductInfoDAO implements IProductInfoDAO {
     }
     
     @Override
+    public long getSupplierByID(long productID) {
+        long supplierID = -1;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        logger.info("Query product supplier id ");
+        try {
+            connection = DataBaseHelper.getConnection();
+            //language=SQL
+            String SQL = "SELECT * FROM \"Product\" WHERE \"ProductID\"=?";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setLong(1, productID);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                supplierID = resultSet.getLong("SupplierID");
+            }
+        } catch (SQLException e) {
+            logger.error("Query product supplier id failed");
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
+        }
+        logger.info("Query product supplier id success");
+        return supplierID;
+    }
+    
+    @Override
     public boolean insertProduct(ProductInfo productInfo) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

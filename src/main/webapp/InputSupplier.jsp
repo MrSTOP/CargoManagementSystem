@@ -27,6 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<link rel="stylesheet" type="text/css" href="css/table.css">
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 
 </head>
 <script type="text/javascript">
@@ -79,7 +80,7 @@
             <td><input type="text" name = "SupplierPhone" value=""></td>
         </tr>
     </table>
-    <button type="submit" id = "ADD" value="添加">
+    <button type="submit" id = "ADD" value="添加">添加</button>
     <input type="reset" value="重置">
 </body>
 </html>

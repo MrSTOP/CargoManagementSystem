@@ -17,7 +17,7 @@ public class AddSupplier extends HttpServlet {
         ISupplierInfoDAO iSupplierInfoDAO = new SupplierDAO();
         SupplierInfo supplierInfo = new SupplierInfo();
         supplierInfo.setSupplierName(request.getParameter("SupplierName"));
-        supplierInfo.setSupplierDescription(request.getParameter("SupllierDescruption"));
+        supplierInfo.setSupplierDescription(request.getParameter("SupplierDescription"));
         supplierInfo.setSupplierAddress(request.getParameter("SupplierAddress"));
         supplierInfo.setSupplierPhone(Long.parseLong(request.getParameter("SupplierPhone")));
 //        supplierInfo.setSupplierID(Long.parseLong(request.getParameter("SupplierID")));
