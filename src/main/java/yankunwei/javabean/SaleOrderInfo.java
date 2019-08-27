@@ -108,4 +108,18 @@ public class SaleOrderInfo {
         return format.format(saleDate);
     }
     //获取时间字符串
+
+    public String getSaleStatusStr(){
+        switch (receiveStatus)
+        {
+            case 0:
+                return "未到货";
+            case 1:
+                return "已到货";
+            case 2:
+                return "已退货";
+            default:
+                return "";
+        }
+    }
 }

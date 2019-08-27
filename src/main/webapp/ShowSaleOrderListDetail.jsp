@@ -36,7 +36,6 @@
                     var saleOrderID = line.children("td:nth-of-type(1)").html();
                     var productID = line.children("td:nth-of-type(2)").html();
                     var userID = line.children("td:nth-of-type(3)").html();
-                    alert(saleOrderID);
                     $.ajax({
                         url: "UpdateSaleOrdreStatusReceived",
                         type: "post",
@@ -45,6 +44,35 @@
                         success:function (data) {
                             if(data === "true") {
                                 line.children("td:nth-of-type(8)").html("已到货");
+                                line.children("td:nth-of-type(9)").children().attr("disabled", "disabled");
+                            }
+                            else
+                            {
+                                alert("操作失败！");
+                            }
+                        },
+                        error:function () {
+                            alert("异常！");
+                        }
+
+
+                    })
+                })
+            })
+            $("[name=MarkAsBack]").each(function (index, element) {
+                $(element).on("click",function () {
+                    var line = $(this).parent().parent();
+                    var saleOrderID = line.children("td:nth-of-type(1)").html();
+                    var productID = line.children("td:nth-of-type(2)").html();
+                    var userID = line.children("td:nth-of-type(3)").html();
+                    $.ajax({
+                        url: "UpdateSaleOrderStatusBack",
+                        type: "post",
+                        data: "SaleOrderID=" + saleOrderID + "&ProductID=" + productID
+                            + "&UserID=" + userID,
+                        success:function (data) {
+                            if(data === "true") {
+                                line.children("td:nth-of-type(8)").html("已退货");
                                 line.children("td:nth-of-type(9)").children().attr("disabled", "disabled");
                             }
                             else
@@ -91,8 +119,11 @@
             <td>${saleOrderInfo.saleOrderCount}</td>
             <td>${saleOrderInfo.productUnitPrice}</td>
             <td>${saleOrderInfo.productTotalPrice}</td>
-            <td>${saleOrderInfo.receiveStatus == requestScope.SALE_STATE_RECEIVED ? "已到货" : "未到货"}</td>
-            <td><button name="MarkAsReceived" ${saleOrderInfo.receiveStatus == requestScope.SALE_STATE_RECEIVED ? "disabled" : ""}>标记为已到货</button></td>
+            <td>${saleOrderInfo.getSaleStatusStr()}</td>
+            <td>
+                <button name="MarkAsReceived" ${saleOrderInfo.receiveStatus == 0 ? "" : "disable"}>标记为已到货</button>
+                <button name="MarkAsBack" ${saleOrderInfo.receiveStatus == 2 ? "disabled" : ""}>标记为已退货</button>
+            </td>
         </tr>
     </c:forEach>
     </tbody>
