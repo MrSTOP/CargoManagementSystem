@@ -37,18 +37,15 @@
                     $("#SupplierID").editableSelect();
                     $("#AddSupplierOrder").click(function () {
                         var productID = $("#ProductID").val();
-                        var supplierID = $("#SupplierID").val();
                         var supplierCount = $("#SupplierCount").val();
                         var numberRegExp = /^[0-9]+$/;
                         var bigDecimalRegExp = /^(([0-9]+)|([0-9]+\.[0-9]{1,2}))$/;
                         if (!productID.match(numberRegExp) ||
-                            !supplierID.match(numberRegExp) ||
                             !supplierCount.match(numberRegExp)) {
                             alert("有未填写的项或格式错误");
                         } else {
                             var cell = "<tr>";
                             cell += "<td>" + productID + "</td>";
-                            cell += "<td>" + supplierID + "</td>";
                             cell += "<td>" + supplierCount + "</td>";
                             cell += "<td><button type='button' onclick='console.log($(this).parent().parent().remove())'>删除</button></td>";
                             cell += "</tr>";
@@ -68,17 +65,15 @@
                                         productID = $(element).html();
                                         break;
                                     case 1:
-                                        supplierID = $(element).html();
-                                        break;
-                                    case 2:
                                         supplierCount = $(element).html();
                                         break;
+                                    case 2:
                                     case 3:
                                     case 4:
                                         break;
                                 }
                             });
-                            JSONData[index] = {"productID": productID, "supplierID": supplierID, "supplierCount": supplierCount};
+                            JSONData[index] = {"productID": productID, "supplierCount": supplierCount};
                         });
                         $.ajax({
                             url: "ProcessBuyOrderInput",
@@ -103,11 +98,10 @@
 
     <body>
         <form action="ProcessBuyOrderInput" method="post" style="text-align: center;">
-            <table>
+            <table style="margin: auto">
                 <thead>
                 <tr>
                     <td>产品ID</td>
-                    <td>供应商ID</td>
                     <td>进货数量</td>
                     <td>操作</td>
                 </tr>
@@ -117,11 +111,10 @@
             </table>
             <input id="SubmitBuyOrder" type="button" value="提交">
         </form>
-        <table>
+        <table style="margin: auto">
             <thead>
                 <tr>
                     <td>产品ID</td>
-                    <td>供应商ID</td>
                     <td>进货数量</td>
                     <td>操作</td>
                 </tr>
@@ -133,15 +126,6 @@
                             <select id="ProductID" name="ProductID">
                                 <c:forEach items="${requestScope.AllProductID}" var="productID">
                                     <option>${productID}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="position: relative;">
-                            <select id="SupplierID" name="SupplierID">
-                                <c:forEach items="${requestScope.AllSupplier}" var="supplierID">
-                                    <option>${supplierID}</option>
                                 </c:forEach>
                             </select>
                         </div>

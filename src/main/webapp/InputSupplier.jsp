@@ -27,6 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<link rel="stylesheet" type="text/css" href="css/table.css">
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 
 </head>
 <script type="text/javascript">

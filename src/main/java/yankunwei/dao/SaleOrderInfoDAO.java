@@ -90,8 +90,8 @@ public class SaleOrderInfoDAO implements ISaleOrderInfoDAO {
             preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setInt(1, status);
             preparedStatement.setLong(2, saleOrderID);
-            preparedStatement.setLong(3, productID);
-            preparedStatement.setLong(4, userID);
+            preparedStatement.setLong(3, userID);
+            preparedStatement.setLong(4, productID);
             if (preparedStatement.executeUpdate() == 1) {
                 logger.info("Update SALE order state success");
                 return true;

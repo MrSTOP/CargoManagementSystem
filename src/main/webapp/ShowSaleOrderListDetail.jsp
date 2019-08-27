@@ -53,7 +53,6 @@
                             }
                         },
                         error:function () {
-                            alert()
                             alert("操作失败！");
                         }
 

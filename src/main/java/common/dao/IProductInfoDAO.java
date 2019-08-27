@@ -14,6 +14,8 @@ public interface IProductInfoDAO {
     
     ProductInfo getProductInfoByID(long productID);
     
+    long getSupplierByID(long productID);
+    
     boolean insertProduct(ProductInfo productInfo);
     
     boolean updateProduct(ProductInfo productInfo);

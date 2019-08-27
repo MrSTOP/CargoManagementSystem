@@ -166,7 +166,7 @@ public class SupplierDAO implements ISupplierInfoDAO {
             preparedStatement.setString(2, supplierInfo.getSupplierDescription());
             preparedStatement.setString(3, supplierInfo.getSupplierAddress());
             preparedStatement.setLong(4,supplierInfo.getSupplierPhone());
-            if(preparedStatement.executeUpdate() == 1)
+            if(preparedStatement.executeUpdate() == 0)
             {
                 logger.info("insert  Supplier success");
                 return true;
