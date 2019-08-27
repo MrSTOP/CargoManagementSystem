@@ -12,6 +12,16 @@ th,td {
     width: 300px;
     padding: .65em;
 }
+thead>tr {
+    background-color: #555555;
+    color: #FFFFFF;
+}
+tbody>tr:nth-of-type(odd) {
+    background-color: #d1d1d1;
+}
+tbody>tr:nth-of-type(even) {
+    background-color: #ffffff;
+}
 th {
     background: #555;
     border: 1px solid #777;
