@@ -74,9 +74,6 @@
     <body style="text-align: center">
     <br>
     <br>
-    <br>
-    <br>
-    <br>
         <button id="MenuSlide" class="InputButtonCommon InputButtonSubmit" style="width: 200px">展开菜单</button>
         <div id="Menu" style="display: none">
             <div class="div_margin" id="ProductManage">
