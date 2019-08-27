@@ -92,8 +92,8 @@
                 <button onclick="window.open('./InputSupplier.jsp', 'MainArea');" class="buttonDefault sub_menu_button">添加供应商</button>
             </div>
             </div>
-            <div class="div_margin"><button onclick="window.open('./ShowAllOutcome.jsp', 'MainArea');" class="buttonDefault">支出流水</button></div>
-            <div class="div_margin"><button onclick="window.open('./ShowIncome.jsp', 'MainArea');" class="buttonDefault">收入流水</button></div>
+            <div class="div_margin"><button onclick="window.open('./ServletGetAllOutcome', 'MainArea');" class="buttonDefault">支出流水</button></div>
+            <div class="div_margin"><button onclick="window.open('./GetAllIncome', 'MainArea');" class="buttonDefault">收入流水</button></div>
             <div class="div_margin"><button onclick="window.open('./ShowBankBalance', 'MainArea');" class="buttonDefault">账户余额</button></div>
             <div class="div_margin" id="UserManage">
                 <button class="buttonDefault">客户信息</button>
