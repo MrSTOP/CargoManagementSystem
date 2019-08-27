@@ -79,7 +79,7 @@
             <td><input type="text" name = "SupplierPhone" value=""></td>
         </tr>
     </table>
-    <button type="submit" id = "ADD" value="添加">
+    <button type="submit" id = "ADD" value="添加">添加</button>
     <input type="reset" value="重置">
 </body>
 </html>
