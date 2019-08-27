@@ -55,8 +55,9 @@
                             success: function (data) {
                                 if(data === "true")
                                 {
-                                    window.location.reload();
                                     alert("用户已成功修改！");
+                                    window.location.href="./FindAllUser";
+
                                 }
                                 else{
                                     alert("用户信息修改失败！");

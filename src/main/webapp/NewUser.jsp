@@ -34,32 +34,32 @@
                 var PhoneRex = /^[0-9]{11}$/;
                 var EmailRex = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
 
-                var userID = $("#UserID").val();
+               /* var userID = $("#UserID").val();*/
                 var userName = $("#UserName").val();
                 var phone = $("#Phone").val();
                 var email = $("#Email").val();
                 var address = $("#Address").val();
-                if(!userID.match(UserRex))
+                /*if(!userID.match(UserRex))
                 {
                     alert("编号不符合要求！");
-                }else if(!phone.match(PhoneRex)){
+                }*/ if(!phone.match(PhoneRex)){
                     alert("手机号码不符格式");
                 }
                 else if(!email.match(EmailRex)){
                     alert("邮箱不符合格式");
                 }
                 else{
-                      $.ajax({
+                      /*$.ajax({
                                url: "IsThisIDUseful",
                                type: "post",
                                data: "UserID=" + userID,
                                success: function (data) {
                                    if(data === "false")
-                                   {
+                                   {*/
                                        $.ajax({
                                                url: "NewUser",
                                                type: "post",
-                                               data: "UserID=" + userID + "&Phone=" + phone +"&UserName=" + userName
+                                               data: "Phone=" + phone +"&UserName=" + userName
                                                    + "&Email=" + email + "&Address=" + address,
                                                success: function (data) {
                                                    if(data === "true")
@@ -76,16 +76,16 @@
                                                }
                                            }
                                        );
-                                   }
+                            /*       }
                                    else{
                                        alert("该编号已被占用！");
                                    }
                                },
                                error:function () {
                                    alert("连接异常！");
-                               }
-                           }
-                      );
+                               }*/
+                           /*}*//*
+                      );*/
                 }
             });
         });
@@ -96,7 +96,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>用户编号</th>
+
                     <th>用户姓名</th>
                     <th>手机号码</th>
                     <th>邮箱地址</th>
@@ -105,7 +105,7 @@
             </thead>
             <tbody>
                 <tr style="text-align: center">
-                    <td><input id="UserID" name="UserID" type="text"/></td>
+
                     <td><input id="UserName" name="UserName" type="text"/></td>
                     <td><input id="Phone" name="Phone" type="text"/></td>
                     <td><input id="Email" name="Email" type="text"/></td>

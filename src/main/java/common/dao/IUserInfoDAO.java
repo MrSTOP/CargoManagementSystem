@@ -16,4 +16,6 @@ public interface IUserInfoDAO {
     List<UserInfo> getAllUserInfo();
 
     boolean IsIDUseful(long userID);
+
+    long getNewSaleOrderID();
 }

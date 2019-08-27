@@ -58,7 +58,7 @@
             $("[name=UpdateUser]").each(function (index,element) {
                 $(element).on("click",function () {
                     var line =$(this).parent().parent();
-                   window.location.href = "FindUser?UserID=" + line.children("td:nth-of-type(1)").html();
+                   window.location.href = "ProcessUpdateUser?UserID=" + line.children("td:nth-of-type(1)").html();
                 });
             });
         });
