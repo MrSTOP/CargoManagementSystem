@@ -40,7 +40,8 @@
                             "&SupplierID=" + $("[name=ID]").val() +
                             "&SupplierName=" + $("[name=Name]").val() +
                             "&SupplierAddress=" + $("[name=Address]").val() +
-                            "&SupplierDescription=" + $("[name=Description]").val(),
+                            "&SupplierDescription=" + $("[name=Description]").val()+
+                            "&SupplierPhone="+$("[name=Phone]").val(),
                         type: "post",
                         success: function (data) {
                             if (data === "true") {
@@ -64,7 +65,7 @@
 <table>
     <tr>
         <td>供应商ID</td>
-        <td><input type="text" name="ID" value="${param.Supplier}"></td>
+        <td><input type="text" name="ID" value="${param.Supplier}" readonly></td>
     </tr>
     <tr>
         <td>供应商姓名</td>
@@ -77,6 +78,10 @@
     <tr>
         <td>供应商描述</td>
         <td> <textarea rows="4" cols="20" name="Description" >${param.SupplierDescription}</textarea></td>
+    </tr>
+    <tr>
+        <td>供应商电话</td>
+        <td> <input type="text" name="Phone" value="${param.SupplierPhone}"></td>
     </tr>
 </table>
 <button id = "Modify">修改</button>

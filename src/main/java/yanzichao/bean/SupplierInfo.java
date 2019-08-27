@@ -5,14 +5,25 @@ public class SupplierInfo {
     private String supplierName;
     private String supplierDescription;
     private String supplierAddress;
+    private long supplierPhone;
     public SupplierInfo() {
     }
-    public SupplierInfo(long supplierID, String supplierName, String supplierDescription, String supplierAddress)
+
+    public long getSupplierPhone() {
+        return supplierPhone;
+    }
+
+    public void setSupplierPhone(long supplierPhone) {
+        this.supplierPhone = supplierPhone;
+    }
+
+    public SupplierInfo(long SupplierID, String supplierName, String supplierDescription, String supplierAddress, long SupplierPhone)
     {
-        this.supplierID = supplierID;
+        this.supplierID = SupplierID;
         this.supplierName = supplierName;
         this.supplierDescription = supplierDescription;
         this.supplierAddress = supplierAddress;
+        this.supplierPhone = SupplierPhone;
     }
     public long getSupplierID() {
         return supplierID;

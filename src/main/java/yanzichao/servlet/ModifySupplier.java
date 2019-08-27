@@ -16,10 +16,11 @@ public class ModifySupplier extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ISupplierInfoDAO iSupplierInfoDAO = new SupplierDAO();
         SupplierInfo supplierInfo = new SupplierInfo();
+        supplierInfo.setSupplierID(Long.parseLong(request.getParameter("SupplierID")));
         supplierInfo.setSupplierName(request.getParameter("SupplierName"));
         supplierInfo.setSupplierDescription(request.getParameter("SupplierDescription"));
         supplierInfo.setSupplierAddress(request.getParameter("SupplierAddress"));
-        supplierInfo.setSupplierID(Long.parseLong(request.getParameter("SupplierID")));
+       supplierInfo.setSupplierPhone(Long.parseLong(request.getParameter("SupplierPhone")));
         response.getWriter().write(String.valueOf(iSupplierInfoDAO.updateSupplier(supplierInfo)));
     }
 

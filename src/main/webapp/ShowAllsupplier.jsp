@@ -63,7 +63,7 @@
                         var line = $(this).parent().parent();
                         window.location.href = "ModifySupplier.jsp?Supplier=" + line.children("td:nth-of-type(1)").html()+"&SupplierName="
                             +line.children("td:nth-of-type(2)").html()+"&SupplierAddress="+line.children("td:nth-of-type(3)").html()
-                        +"&SupplierDescription="+line.children("td:nth-of-type(4)").html();
+                        +"&SupplierDescription="+line.children("td:nth-of-type(4)").html()+"&SupplierPhone="+line.children("td:nth-of-type(5)").html();
                     }
                 })
             });
@@ -80,6 +80,7 @@
         <td>供应商姓名</td>
         <td>供应商地址</td>
         <td>供应商描述</td>
+        <td>供应商电话</td>
         <td>操作</td>
     </tr>
     </thead>
@@ -90,6 +91,7 @@
             <td>${supplierInfo.supplierName}</td>
             <td>${supplierInfo.supplierAddress}</td>
             <td>${supplierInfo.supplierDescription}</td>
+            <td>${supplierInfo.supplierPhone}</td>
             <td>
                 <button name="DeleteSupplier">删除</button>
                 <button name="ModifySupplier">修改</button>

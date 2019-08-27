@@ -29,9 +29,38 @@
 	<link rel="stylesheet" type="text/css" href="css/table.css">
 
 </head>
+<script type="text/javascript">
+    $(function () {
+        $(document).ready(function () {
+            $("#ADD").bind({
+                "click": function () {
+                    $.ajax({
+                        url: "AddSupplier",
+                        data:
+                            "&SupplierName=" + $("[name=SupplierName]").val() +
+                            "&SupplierAddress=" + $("[name=SupplierAddress]").val() +
+                            "&SupplierDescription=" + $("[name=SupllierDescruption]").val()+
+                            "&SupplierPhone="+$("[name=SupplierPhone]").val(),
+                        type: "post",
+                        success: function (data) {
+                            if (data === "true") {
+                                alert("添加信息成功");
+                                window.location.href = "GetAllSupplier";
 
+                            } else {
+                                alert("修改信息失败");
+                            }
+                        },
+                        error: function () {
+                            alert("修改信息失败");
+                        }
+                    })
+                }
+            })
+        });
+    });
+</script>
 <body style="text-align: center">
-<form action="AddSupplier"  method="post">
     <table style="width: 750px;margin: auto">
         <tr>
             <td>供应商姓名</td>
@@ -45,9 +74,12 @@
             <td>供应商地址</td>
             <td><input type="text" name = "SupplierAddress" value=""></td>
         </tr>
+        <tr>
+            <td>供应商电话</td>
+            <td><input type="text" name = "SupplierPhone" value=""></td>
+        </tr>
     </table>
-    <input type="submit" value="添加">
+    <button type="submit" id = "ADD" value="添加">
     <input type="reset" value="重置">
-</form>
 </body>
 </html>
