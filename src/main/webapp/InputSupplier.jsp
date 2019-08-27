@@ -48,7 +48,6 @@
     </table>
     <input type="submit" value="添加">
     <input type="reset" value="重置">
-    <input type="button" value="返回" onclick="location.href = 'RootFun.jsp'">
 </form>
 </body>
 </html>
