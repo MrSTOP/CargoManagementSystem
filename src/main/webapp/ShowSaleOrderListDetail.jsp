@@ -40,7 +40,7 @@
                     $.ajax({
                         url: "UpdateSaleOrdreStatusReceived",
                         type: "post",
-                        date: "SaleOrderID=" + saleOrderID + "&ProductID=" + productID
+                        data: "SaleOrderID=" + saleOrderID + "&ProductID=" + productID
                         + "&UserID=" + userID,
                         success:function (data) {
                             if(data === "true") {
