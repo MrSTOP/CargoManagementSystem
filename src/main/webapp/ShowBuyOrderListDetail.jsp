@@ -77,17 +77,17 @@
         </tr>
         </thead>
         <tbody>
-            <c:forEach items="${requestScope.AllBuyOrderInfo}" var="buyOrderInfo">
+            <c:forEach items="${requestScope.AllBuyOrderInfo}" var="saleOrderInfo">
                 <tr>
-                    <td>${buyOrderInfo.supplierOrderID}</td>
-                    <td>${buyOrderInfo.productID}</td>
-                    <td>${buyOrderInfo.supplierID}</td>
-                    <td>${buyOrderInfo.getSupplierDateStr()}</td>
-                    <td>${buyOrderInfo.supplierCount}</td>
-                    <td>${buyOrderInfo.currentProductBuyPrice}</td>
-                    <td>${buyOrderInfo.currentProductPrice}</td>
-                    <td>${buyOrderInfo.supplierStatus == requestScope.SUPPLIER_STATE_RECEIVED ? "已到货" : "未到货"}</td>
-                    <td><button name="MarkAsReceived" ${buyOrderInfo.supplierStatus == requestScope.SUPPLIER_STATE_RECEIVED ? "disabled" : ""}>标记为已到货</button></td>
+                    <td>${saleOrderInfo.supplierOrderID}</td>
+                    <td>${saleOrderInfo.productID}</td>
+                    <td>${saleOrderInfo.supplierID}</td>
+                    <td>${saleOrderInfo.getSupplierDateStr()}</td>
+                    <td>${saleOrderInfo.supplierCount}</td>
+                    <td>${saleOrderInfo.currentProductBuyPrice}</td>
+                    <td>${saleOrderInfo.currentProductPrice}</td>
+                    <td>${saleOrderInfo.supplierStatus == requestScope.SUPPLIER_STATE_RECEIVED ? "已到货" : "未到货"}</td>
+                    <td><button name="MarkAsReceived" ${saleOrderInfo.supplierStatus == requestScope.SUPPLIER_STATE_RECEIVED ? "disabled" : ""}>标记为已到货</button></td>
                 </tr>
             </c:forEach>
         </tbody>

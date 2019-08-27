@@ -103,7 +103,7 @@
             </div>
 
             <div class="div_margin"><button onclick="window.open('./ShowAllBuyOrderListStatus', 'MainArea');" class="buttonDefault">进货情况</button></div>
-            <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">发货情况</button></div>
+            <div class="div_margin"><button onclick="window.open('./ShowAllSaleOrderListStatus', 'MainArea');" class="buttonDefault">发货情况</button></div>
         </div>
     </body>
 </html>

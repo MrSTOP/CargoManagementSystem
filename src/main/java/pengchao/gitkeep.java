@@ -2,6 +2,8 @@ package pengchao;
 
 import pengchao.dao.UserInfoDAO;
 import pengchao.javabean.*;
+import yankunwei.dao.SaleOrderInfoDAO;
+import yankunwei.javabean.SaleOrderInfo;
 
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ public class gitkeep {
     public static void main(String[] args)
     {
         //UserInfo userInfo = new UserInfo(2,"pb","1523658452","1555@126.com","11路");
-        UserInfoDAO userInfoDAO = new UserInfoDAO();
+     //   UserInfoDAO userInfoDAO = new UserInfoDAO();
        // List<Long> userList = userInfoDAO.getAllUserID();
         //List<UserInfo> userInfos = new ArrayList();
 
@@ -24,7 +26,7 @@ public class gitkeep {
             System.out.println(userID);
         }*/
 
-       userInfoDAO.deleteUser(2);
+    //   userInfoDAO.deleteUser(2);
 
        //System.out.println(userInfo.getUserName());
         /*
@@ -35,6 +37,10 @@ public class gitkeep {
             System.out.println(userInfo.getPhone());
             System.out.println(0);
         */
+
+        SaleOrderInfoDAO saleOrderInfoDAO = new SaleOrderInfoDAO();
+        //SaleOrderInfo saleOrderInfo = new SaleOrderInfo();
+        System.out.println(saleOrderInfoDAO.getAllSaleOrderID().get(0));
     }
 
 }
