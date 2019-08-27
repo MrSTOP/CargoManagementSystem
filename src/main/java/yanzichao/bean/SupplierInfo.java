@@ -6,7 +6,6 @@ public class SupplierInfo {
     private String supplierDescription;
     private String supplierAddress;
     public SupplierInfo() {
-
     }
     public SupplierInfo(long supplierID, String supplierName, String supplierDescription, String supplierAddress)
     {

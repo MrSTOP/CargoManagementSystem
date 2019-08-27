@@ -35,12 +35,11 @@
                             $.ajax({
                                 url: "ExecModifyProduct",
                                 data: "ProductID=" + $("#ProductID").html() +
-                                    "&SupplierID=" + $("[name=SupplierID]").val() +
-                                    "&SupplierOrderID=" + $("[name=SupplierOrderID]").val() +
+                                    "&SupplierID=" + $("#SupplierID").html() +
                                     "&ProductName=" + $("[name=ProductName]").val() +
                                     "&ProductSalePrice=" + $("[name=ProductSalePrice]").val() +
                                     "&ProductBuyPrice=" + $("[name=ProductBuyPrice]").val() +
-                                    "&ProductDescription=" + $("[name=ProdoctDescription]").val(),
+                                    "&ProductDescription=" + $("[name=ProductDescription]").val(),
                                 type: "post",
                                 success: function (data) {
                                     if (data === "true") {
@@ -60,13 +59,12 @@
         </script>
     </head>
 
-    <body>
+    <body style="text-align: center">
         <table>
             <thead>
                 <tr>
                     <td>产品ID</td>
                     <td>供应商ID</td>
-                    <td>订单ID</td>
                     <td>产品名称</td>
                     <td>产品售价</td>
                     <td>产品进价</td>
@@ -76,12 +74,7 @@
             <tbody>
                 <tr>
                     <td id="ProductID">${requestScope.ProductInfo.productID}</td>
-                    <td>
-                        <input type="text" name="SupplierID" value=${requestScope.ProductInfo.supplierID}>
-                    </td>
-                    <td>
-                        <input type="text" name="SupplierOrderID" value=${requestScope.ProductInfo.supplierOrderID}>
-                    </td>
+                    <td id="SupplierID">${requestScope.ProductInfo.supplierID}</td>
                     <td>
                         <input type="text" name="ProductName" value=${requestScope.ProductInfo.productName}>
                     </td>
@@ -92,7 +85,7 @@
                         <input type="text" name="ProductBuyPrice" value=${requestScope.ProductInfo.productBuyPrice}>
                     </td>
                     <td>
-                        <input type="text" name="ProductDescription" value=${requestScope.ProductInfo.productDescription}>
+                        <textarea rows="4" cols="18" name="ProductDescription">${requestScope.ProductInfo.productDescription}</textarea>
                     </td>
                 </tr>
             </tbody>

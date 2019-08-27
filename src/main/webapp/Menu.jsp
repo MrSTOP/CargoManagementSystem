@@ -57,25 +57,21 @@
                             }
                         });
                     });
-                    $("#ProductManage").hover(function () {
-                        $(this).children(".sub_menu").slideDown("fast");
-                    }, function () {
-                        $(this).children(".sub_menu").slideUp("fast");
+                    $("#ProductManage>button").click(function () {
+                        $(this).parent().children(".sub_menu").slideToggle("fast");
                     });
-                    $("#UserManage").hover(function () {
-                        $(this).children(".sub_menu").slideDown("fast");
-                    },function () {
-                        $(this).children(".sub_menu").slideUp("fast");
-                    })
+                    $("#SupplierManage>button").click(function () {
+                        $(this).parent().children(".sub_menu").slideToggle("fast");
+                    });
+                    $("#UserManage>button").click(function () {
+                        $(this).parent().children(".sub_menu").slideToggle("fast");
+                    });
                 });
             });
         </script>
     </head>
 
     <body style="text-align: center">
-    <br>
-    <br>
-    <br>
     <br>
     <br>
         <button id="MenuSlide" class="InputButtonCommon InputButtonSubmit" style="width: 200px">展开菜单</button>
@@ -89,9 +85,15 @@
                 </div>
             </div>
             <div class="div_margin"><button onclick="window.open('./OrderInput', 'MainArea');" class="buttonDefault">添加订单</button></div>
-            <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">供应商</button></div>
-            <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">支出流水</button></div>
-            <div class="div_margin"><button onclick="window.open('./', 'MainArea');" class="buttonDefault">收入流水</button></div>
+            <div class="div_margin" id="SupplierManage">
+                <button class="buttonDefault">供应商管理</button>
+                <div class="sub_menu" style="display: none;">
+                <button onclick="window.open('./GetAllSupplier', 'MainArea');" class="buttonDefault sub_menu_button">供应商查看</button>
+                <button onclick="window.open('./InputSupplier.jsp', 'MainArea');" class="buttonDefault sub_menu_button">添加供应商</button>
+            </div>
+            </div>
+            <div class="div_margin"><button onclick="window.open('./ShowAllOutcome.jsp', 'MainArea');" class="buttonDefault">支出流水</button></div>
+            <div class="div_margin"><button onclick="window.open('./ShowIncome.jsp', 'MainArea');" class="buttonDefault">收入流水</button></div>
             <div class="div_margin"><button onclick="window.open('./ShowBankBalance', 'MainArea');" class="buttonDefault">账户余额</button></div>
             <div class="div_margin" id="UserManage">
                 <button class="buttonDefault">客户信息</button>
