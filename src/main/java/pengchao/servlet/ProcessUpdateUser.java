@@ -10,22 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "NewUser",urlPatterns = "/NewUser")
-public class NewUser extends HttpServlet {
+@WebServlet(name = "ProcessUpdateUser", urlPatterns = "/ProcessUpdateUser")
+public class ProcessUpdateUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserInfo userInfo = new UserInfo();
         UserInfoDAO userInfoDAO = new UserInfoDAO();
-        long i = -1;
-        userInfo.setUserID(i);
-        userInfo.setUserName(request.getParameter("UserName"));
-        userInfo.setPhone(request.getParameter("Phone"));
-        userInfo.setEmail(request.getParameter("Email"));
-        userInfo.setAddress(request.getParameter("Address"));
-        boolean bingo = userInfoDAO.insertUser(userInfo);
-        response.getWriter().write(String.valueOf(bingo));
+        long userID = Long.parseLong(request.getParameter("UserID"));
+        UserInfo userInfo = userInfoDAO.getUserInfoByID(userID);
+        request.setAttribute("UserInfo", userInfo);
+        request.getRequestDispatcher("UpdateUser.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request,response);
+    this.doPost(request,response);
     }
 }

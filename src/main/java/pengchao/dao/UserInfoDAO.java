@@ -47,11 +47,12 @@ public class UserInfoDAO implements IUserInfoDAO {
         PreparedStatement preparedStatement = null;
         int n;
         logger.info("Insert New User");
+        long userID = getNewSaleOrderID();
         try {
             connection = DataBaseHelper.getConnection();
             String SQL = "INSERT INTO \"User\"(\"UserID\", \"UserName\", \"Phone\", \"Email\", \"Address\") VALUES (?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setLong(1,userInfo.getUserID());
+            preparedStatement.setLong(1,userID);
             preparedStatement.setString(2,userInfo.getUserName());
             preparedStatement.setString(3,userInfo.getPhone());
             preparedStatement.setString(4,userInfo.getEmail());
@@ -249,4 +250,31 @@ public class UserInfoDAO implements IUserInfoDAO {
         return true;
 
     }
+
+
+    public long getNewSaleOrderID() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        logger.info("Query new user id");
+        try {
+            connection = DataBaseHelper.getConnection();
+            //language=SQL
+            String SQL = "SELECT USER_ID_SEQ.nextval AS USER_ID FROM DUAL";
+            preparedStatement = connection.prepareStatement(SQL);
+            resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            long userID = resultSet.getLong("USER_ID");
+            logger.info("Query new user id success");
+            return userID;
+        } catch (SQLException e) {
+            logger.error("Query new user id failed");
+            e.printStackTrace();
+        } finally {
+            DataBaseHelper.closeResource(resultSet, preparedStatement, connection);
+        }
+        logger.error("Query new user id failed");
+        return -1;
+    }
+
 }
