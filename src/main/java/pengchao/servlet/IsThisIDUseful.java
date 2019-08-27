@@ -15,6 +15,7 @@ public class IsThisIDUseful extends HttpServlet {
 
         UserInfoDAO userInfoDAO = new UserInfoDAO();
         long userID = Long.parseLong(request.getParameter("UserID"));
+        System.out.println(userID);
         boolean bingo = userInfoDAO.IsIDUseful(userID);
         response.getWriter().write(String.valueOf(bingo));
         //request.getRequestDispatcher("index.jsp").forward(request,response);

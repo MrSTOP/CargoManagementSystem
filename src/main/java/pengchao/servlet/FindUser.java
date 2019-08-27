@@ -18,7 +18,7 @@ public class FindUser extends HttpServlet {
         long userID = Long.parseLong(request.getParameter("UserID"));
         UserInfo userInfo = userInfoDAO.getUserInfoByID(userID);
         request.setAttribute("UserInfo", userInfo);
-        request.getRequestDispatcher("UpdateUser.jsp").forward(request,response);
+        request.getRequestDispatcher("ShowUser.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

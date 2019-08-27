@@ -100,7 +100,7 @@
                 <div class="sub_menu" style="display: none;">
                     <button onclick="window.open('./FindAllUser', 'MainArea');" class="buttonDefault sub_menu_button">所有客户</button>
                     <button onclick="window.open('./NewUser.jsp', 'MainArea');" class="buttonDefault sub_menu_button">添加客户</button>
-                    <button onclick="window.open('./FindUser', 'MainArea');" class="buttonDefault sub_menu_button">查询客户</button>
+                    <button onclick="window.open('./InputUserID.jsp', 'MainArea');" class="buttonDefault sub_menu_button">查询客户</button>
                 </div>
             </div>
 
