@@ -41,12 +41,13 @@
                 </tr>
             </thead>
             <tbody>
-            <c:forEach items="${requestScope.AllBuyOrderList}" var="buyOrderList">
+
+            <c:forEach items="${requestScope.AllBuyOrderList}" var="saleOrderList">
                 <tr>
-                    <td><a href="ShowBuyOrderListDetail?BuyOrderListID=${buyOrderList.buyOrderID}">${buyOrderList.buyOrderID}</a></td>
-                    <td>${buyOrderList.getTimeStr()}</td>
-                    <td>${buyOrderList.totalPrice}</td>
-                    <td>${buyOrderList.isAllReceived()? "全部到货" : "未全部到货"}</td>
+                    <td><a href="ShowBuyOrderListDetail?BuyOrderListID=${saleOrderList.buyOrderID}">${saleOrderList.buyOrderID}</a></td>
+                    <td>${saleOrderList.getTimeStr()}</td>
+                    <td>${saleOrderList.totalPrice}</td>
+                    <td>${saleOrderList.isAllReceived()? "全部到货" : "未全部到货"}</td>
                 </tr>
             </c:forEach>
             </tbody>

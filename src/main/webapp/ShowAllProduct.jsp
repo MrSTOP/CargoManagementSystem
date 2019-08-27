@@ -80,7 +80,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${requestScope.AllProductInfo}" var="userInfo">
+    <c:forEach items="${requestScope.AllProductInfo}" var="productInfo">
         <tr>
             <td>${productInfo.productID}</td>
             <td>${productInfo.supplierID}</td>
