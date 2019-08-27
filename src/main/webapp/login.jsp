@@ -52,8 +52,8 @@
 
     <body style="text-align: center">
         <div id="Login">
-            <input type="text" name="UserName" placeholder="用户名">
-            <input type="password" name="Password" placeholder="密码">
+            <input type="text" name="UserName" placeholder="用户名"><br/>
+            <input type="password" name="Password" placeholder="密码"><br/>
             <input type="button" value="登录">
         </div>
     </body>
