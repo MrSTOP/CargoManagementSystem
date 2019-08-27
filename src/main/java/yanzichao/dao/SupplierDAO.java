@@ -81,7 +81,8 @@ public class SupplierDAO implements ISupplierInfoDAO {
                         resultSet.getLong("SupplierID"),
                         resultSet.getString("SupplierName"),
                         resultSet.getString("SupplierDescription"),
-                        resultSet.getString("SupplierAddress"));
+                        resultSet.getString("SupplierAddress"),
+                        resultSet.getLong("SupplierPhone"));
                 supplierInfos.add(supplierInfo);
             }
         } catch (SQLException e) {
@@ -102,12 +103,13 @@ public class SupplierDAO implements ISupplierInfoDAO {
         logger.info("Update Supplier");
         try {
             connection = DataBaseHelper.getConnection();
-            String SQL = "UPDATE  \"Supplier\" SET \"SupplierName\" = ? , \"SupplierDescription\" = ?, \"SupplierAddress\" = ? where \"SupplierID\" = ?";
+            String SQL = "UPDATE  \"Supplier\" SET \"SupplierName\" = ? , \"SupplierDescription\" = ?, \"SupplierAddress\" = ?, \"SupplierPhone\" = ?where \"SupplierID\" = ?";
             preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setString(1, supplierInfo.getSupplierName());
             preparedStatement.setString(2, supplierInfo.getSupplierDescription());
             preparedStatement.setString(3, supplierInfo.getSupplierAddress());
-            preparedStatement.setLong(4, supplierInfo.getSupplierID());
+            preparedStatement.setLong(4,supplierInfo.getSupplierPhone());
+            preparedStatement.setLong(5, supplierInfo.getSupplierID());
             if(preparedStatement.executeUpdate() == 1)
             {
                 logger.info("Update  Supplier success");
@@ -138,6 +140,7 @@ public class SupplierDAO implements ISupplierInfoDAO {
                 supplierInfos.setSupplierID(resultSet.getLong("SupplierID"));
                 supplierInfos.setSupplierName(resultSet.getString("SupplierName"));
                 supplierInfos.setSupplierDescription(resultSet.getString("SupplierDescription"));
+                supplierInfos.setSupplierPhone(resultSet.getLong("SupplierPhone"));
                 supplierInfos.setSupplierAddress(resultSet.getString("SupplierAddress"));
             }
         } catch (SQLException e) {
@@ -157,11 +160,12 @@ public class SupplierDAO implements ISupplierInfoDAO {
         logger.info("Update Supplier");
         try {
             connection = DataBaseHelper.getConnection();
-            String SQL = "CALL SUPPLIER_INSERT(?, ?, ?)";
+            String SQL = "CALL SUPPLIER_INSERT(?, ?, ?,?)";
             preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setString(1, supplierInfo.getSupplierName());
             preparedStatement.setString(2, supplierInfo.getSupplierDescription());
             preparedStatement.setString(3, supplierInfo.getSupplierAddress());
+            preparedStatement.setLong(4,supplierInfo.getSupplierPhone());
             if(preparedStatement.executeUpdate() == 1)
             {
                 logger.info("insert  Supplier success");
