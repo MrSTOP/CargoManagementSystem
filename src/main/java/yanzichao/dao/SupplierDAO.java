@@ -157,12 +157,11 @@ public class SupplierDAO implements ISupplierInfoDAO {
         logger.info("Update Supplier");
         try {
             connection = DataBaseHelper.getConnection();
-            String SQL = "insert into \"Supplier\"(\"SupplierID\",\"SupplierName\",\"SupplierDescription\",\"SupplierAddress\") values (?,?,?,?)";
+            String SQL = "CALL SUPPLIER_INSERT(?, ?, ?)";
             preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setLong(1, supplierInfo.getSupplierID());
-            preparedStatement.setString(2, supplierInfo.getSupplierName());
-            preparedStatement.setString(3, supplierInfo.getSupplierDescription());
-            preparedStatement.setString(4, supplierInfo.getSupplierAddress());
+            preparedStatement.setString(1, supplierInfo.getSupplierName());
+            preparedStatement.setString(2, supplierInfo.getSupplierDescription());
+            preparedStatement.setString(3, supplierInfo.getSupplierAddress());
             if(preparedStatement.executeUpdate() == 1)
             {
                 logger.info("insert  Supplier success");

@@ -26,16 +26,13 @@
     <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="stylesheet" type="text/css" href="css/table.css">
 
 </head>
 
-<body>
+<body style="text-align: center">
 <form action="AddSupplier"  method="post">
     <table style="width: 750px;margin: auto">
-        <tr>
-            <td>供应商ID</td>
-            <td><input type="text" name = "SupplierID" value=""></td>
-        </tr>
         <tr>
             <td>供应商姓名</td>
             <td><input type="text" name = "SupplierName" value=""></td>
