@@ -57,7 +57,7 @@
     </script>
 </head>
 <body style="text-content: center">
-        <table>
+        <table style="margin: auto">
             <tr>
                 <th>用户ID</th>
             </tr>
