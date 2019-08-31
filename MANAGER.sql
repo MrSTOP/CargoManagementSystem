@@ -1,5 +1,5 @@
 prompt PL/SQL Developer Export User Objects for user MANAGER@47.103.113.9:1521/ORCL
-prompt Created by MrST on 2019å¹´8æœˆ28æ—¥
+prompt Created by MrST on 2019å¹´8æœˆ31æ—¥
 set define off
 spool MANAGER.log
 
@@ -509,7 +509,7 @@ prompt
 create sequence MANAGER.SALE_ORDER_ID_SEQ
 minvalue 1
 maxvalue 9223372036854775807
-start with 151
+start with 201
 increment by 1
 cache 50;
 
@@ -520,7 +520,7 @@ prompt
 create sequence MANAGER.SUPPLIER_ID_SEQ
 minvalue 1
 maxvalue 9223372036854775807
-start with 101
+start with 151
 increment by 1
 cache 50;
 
@@ -542,7 +542,7 @@ prompt
 create sequence MANAGER.USER_SEQ
 minvalue 1
 maxvalue 9999999999999999999999999999
-start with 10
+start with 15
 increment by 1
 nocache;
 
@@ -705,7 +705,7 @@ begin
     Time_out := SYSDATE;
     Price_out := :OLD."SaleProductPrice";
     P_Count := :OLD."SaleOrderCount";
-    out_description := 'ÔÚ'||to_char(Time_out,'yyyy-mm-dd HH:MI:SS')||'Âô³ö²úÆ·'||Product_name||P_Count||'¼ş'||'ÊÕÈë¹²¼Æ:'||Price_out||'Ôª'||'¿Í»§ĞÕÃûÎª:'||P_name||'¿Í»§IDÎª:'||P_ID;
+    out_description := 'åœ¨'||to_char(Time_out,'yyyy-mm-dd HH:MI:SS')||'å–å‡ºäº§å“'||Product_name||P_Count||'ä»¶'||'æ”¶å…¥å…±è®¡:'||Price_out||'å…ƒ'||'å®¢æˆ·å§“åä¸º:'||P_name||'å®¢æˆ·IDä¸º:'||P_ID;
     insert into "Income"("UserID","SaleTime","SalePrice","Description")values (P_ID,Time_out,Price_out,out_description);
     elsif :NEW."ReceiveStatus" = 2
     then
@@ -714,7 +714,7 @@ begin
       P_ID := :OLD."UserID";
       Time_out := SYSDATE;
       Price_out := :OLD."SaleProductPrice";
-      out_description := 'ÔÚ'||to_char(Time_out,'yyyy-mm-dd HH:MI:SS')||'¿Í»§'||P_name||'¿Í»§IDÎª:'||P_ID||'ÍË»Ø²úÆ·'||Product_name||'×Ü¶î¹²¼Æ:'||Price_out||'Ôª';
+      out_description := 'åœ¨'||to_char(Time_out,'yyyy-mm-dd HH:MI:SS')||'å®¢æˆ·'||P_name||'å®¢æˆ·IDä¸º:'||P_ID||'é€€å›äº§å“'||Product_name||'æ€»é¢å…±è®¡:'||Price_out||'å…ƒ';
       insert into "Income"("UserID","SaleTime","SalePrice","Description")values (P_ID,Time_out,Price_out,out_description);
   end if;
 
@@ -745,7 +745,7 @@ begin
       Time_out := :OLD."SupplierDate";
       Price_out := :OLD."SupplierPrice";
       P_Count := :OLD."SupplierCount";
-      out_description := 'ÔÚ'||to_char(Time_out,'yyyy-mm-dd HH:MI:SS')||'ÓÚ¹©Ó¦ÉÌ'||P_name||'´¦'||'¸¶³ö'||Price_out||'Ôª'||'ÂòÈë²úÆ·'||Product_name||P_Count||'¼ş'||'¹©Ó¦ÉÌIDÎª:'||P_ID;
+      out_description := 'åœ¨'||to_char(Time_out,'yyyy-mm-dd HH:MI:SS')||'äºä¾›åº”å•†'||P_name||'å¤„'||'ä»˜å‡º'||Price_out||'å…ƒ'||'ä¹°å…¥äº§å“'||Product_name||P_Count||'ä»¶'||'ä¾›åº”å•†IDä¸º:'||P_ID;
       insert into "Outcome"("SupplierID", "OutTime", "OutPrice",  "Description") values (P_ID,Time_out,Price_out,out_description);
   end if;
 end;
