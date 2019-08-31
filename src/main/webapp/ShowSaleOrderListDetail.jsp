@@ -121,7 +121,7 @@
             <td>${saleOrderInfo.productTotalPrice}</td>
             <td>${saleOrderInfo.getSaleStatusStr()}</td>
             <td>
-                <button name="MarkAsReceived" ${saleOrderInfo.receiveStatus == 0 ? "" : "disable"}>标记为已到货</button>
+                <button name="MarkAsReceived" ${saleOrderInfo.receiveStatus == 0 ? "" : "disabled"}>标记为已到货</button>
                 <button name="MarkAsBack" ${saleOrderInfo.receiveStatus == 2 ? "disabled" : ""}>标记为已退货</button>
             </td>
         </tr>
